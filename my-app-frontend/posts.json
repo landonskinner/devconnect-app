@@ -1,0 +1,30 @@
+{
+    "posts": [{
+        "id": 1,
+        "header": "cool stuff",
+        "description": "stuff",
+        "img": "hello.jpg",
+        "content": "cool programmer",
+        "likes": 2,
+        "user_id": 1
+    },
+    {
+        "id": 2,
+        "header": "very cool stuff",
+        "description": "nice stuff",
+        "img": "hello.jpg",
+        "content": "programmer things",
+        "likes": 0,
+        "user_id": 3
+    },
+    {
+        "id": 3,
+        "header": "stuff",
+        "description": "big stuff",
+        "img": "hello.jpg",
+        "content": "coolest programmer",
+        "likes": 20,
+        "user_id": 2
+    }
+]
+}
