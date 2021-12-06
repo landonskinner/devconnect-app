@@ -3,7 +3,7 @@
         "id": 1,
         "header": "cool stuff",
         "description": "stuff",
-        "img": "hello.jpg",
+        "img": "https://via.placeholder.com/150",
         "content": "cool programmer",
         "likes": 2,
         "user_id": 1
@@ -12,7 +12,7 @@
         "id": 2,
         "header": "very cool stuff",
         "description": "nice stuff",
-        "img": "hello.jpg",
+        "img": "https://via.placeholder.com/150",
         "content": "programmer things",
         "likes": 0,
         "user_id": 3
@@ -21,10 +21,35 @@
         "id": 3,
         "header": "stuff",
         "description": "big stuff",
-        "img": "hello.jpg",
+        "img": "https://via.placeholder.com/150",
         "content": "coolest programmer",
         "likes": 20,
         "user_id": 2
     }
-]
+    ],
+    "users": [{
+        "id": 1,
+        "name": "Bob Smith",
+        "username": "bobsmith",
+        "password": "123456",
+        "bio": "cool programmer",
+        "img": "hello.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Joe",
+        "username": "joe123",
+        "password": "hello1",
+        "bio": "tired",
+        "img": "hello.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Mary",
+        "username": "maryisfun",
+        "password": "ilovecats",
+        "bio": "cats",
+        "img": "hello.jpg"
+    }
+    ]
 }
