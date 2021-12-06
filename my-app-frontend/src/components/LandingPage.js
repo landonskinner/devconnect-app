@@ -1,3 +1,3 @@
 function LandingPage(){
-  return "landing page"
+  return "landing page update"
 }
