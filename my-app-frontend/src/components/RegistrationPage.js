@@ -1,8 +1,6 @@
-import styled from 'styled-components'
-
 function RegistrationPage(){
   return(
-    <RegistrationContainer>
+    <div className="registration-container">
       <form>
         <h3>Register</h3>
         <div className="registration-input">
@@ -21,12 +19,12 @@ function RegistrationPage(){
           <label for="password">Password</label>
           <input type="password" className="registration-details" placeholder="Enter password" />
         </div>
-        <button type="submit" className="submit-btn">Register</button>
+        <button type="submit" className="submit">Register</button>
         <p className="registered-text">
           Already registered <a href="#">log in?</a>
         </p>
       </form>
-    </RegistrationContainer>
+    </div>
   )
 }
 

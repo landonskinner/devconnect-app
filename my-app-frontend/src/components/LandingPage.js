@@ -1,34 +1,21 @@
-import styled from "styled-components"
-
 function LandingPage(){
   return (
-    <LandingContainer>
-      <form>
-        <h3>Log in</h3>
-        <div className="login-input">
-          <label for="email">Email</label>
-          <input type="email" className="login-details" placeholder="Enter email" />
+    <div className="login-container">
+    <form>
+      <h3>Sign In</h3>
+      <div className="login-input">
+        <label for="email">Email:</label><br/>
+        <input type="email" className="login-details" placeholder="Enter email" />
       </div>
       <div className="login-input">
-          <label for="password">Password</label>
-          <input type="password" className="login-details" placeholder="Enter password" />
+        <label for="password">Password</label><br/>
+        <input type="password" className="login-details" placeholder="Enter password" />
       </div>
-      <div className="login-input">
-          <div className="custom-control custom-checkbox">
-              <input type="checkbox" className="custom-control-input" id="customCheck1" />
-              <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
-          </div>
-      </div>
-      <button type="submit" className="submit-btn">Sign in</button>
+      <button type="submit" className="submit">Sign in</button>
     </form>
-  </LandingContainer>
+  </div>
   )
 }
 
 export default LandingPage
-
-const LandingContainer = styled.div`
-
-
-`
 
