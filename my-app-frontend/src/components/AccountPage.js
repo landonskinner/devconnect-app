@@ -3,6 +3,7 @@ import PostContainer from "./PostContainer"
 import styled from "styled-components"
 import githublogo from "../images/github-logo.png"
 import linkedinlogo from "../images/linkedin-logo.png"
+import NavBar from './NavBar'
 
 
 function AccountPage({name, search}) {
@@ -38,7 +39,9 @@ function AccountPage({name, search}) {
                 <div>Following: 32</div>
                 </div>
             </div>
-        
+            <div id="nav">
+                <NavBar />
+            </div>
             <div className="post-container">
                 <h3>Your Posts:</h3>
                 <PostContainer name={name} search={search}/>
@@ -114,13 +117,24 @@ const AccountHeader = styled.div`
 
     .post-container {
         position: relative;
-        bottom: 55px;
+        bottom: 175px;
     }
 
     .post-container h3 {
         font-size: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        z-index: -1;
     }
 
-
+    #nav {
+        position: relative;
+        bottom: 115px;
+        left: 3%;
+        width: 25%;
+        z-index: 1;
+    }
 
 `
