@@ -82,26 +82,4 @@ const PostCard = styled.div`
     padding: 7px;
     box-shadow: 10px 10px grey;
     
-
-    // h2 {
-    //     font-size: 24px;
-    // }
-
-    // .author {
-    //     display: flex;
-    //     justify-content: center;
-    //     align-items: center;
-    //     text-align: center;
-    // }
-
-    // .author img {
-    //     height: 25px;
-    //     width: 25px;
-    //     border-radius: 25px;
-    //     border: 1px solid black;
-    //     padding: 0px;
-    //     margin: 5px;
-    // }
-
-
 `

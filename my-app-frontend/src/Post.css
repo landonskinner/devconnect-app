@@ -6,29 +6,35 @@
     font-size: 12px;
     height: auto;
     line-height: 16.0799999237061px;
-    margin-bottom: 10px;
     padding-bottom: 12px;
     padding-left: 12px;
     padding-right: 12px;
     padding-top: 12px;
     text-align: left;
-    width: auto;
+    width: 95%;
     word-wrap: break-word;
-  
     }
+
+    .mock-outer p {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
     .mock-inner{
         direction: ltr;
         display: block;
         height: auto;
-        width: auto;
+      
+        width: 100%;
     }
     
     .usertext{
       color: rgb(20, 24, 35);
     direction: ltr;
     display: inline;
-    font-size: 14px;
-    font-weight: normal;
+    font-size: 18px;
+    font-weight: bold;
     height: auto;
     line-height: 19.3199996948242px;
     margin-bottom: 0px;
@@ -45,12 +51,13 @@
       -webkit-box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 0px 1.5px inset, rgba(0, 0, 0, 0.0470588) 0px 1px 1px 0px;
     background-color: rgb(255, 255, 255);
     box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 0px 1.5px inset, rgba(0, 0, 0, 0.0470588) 0px 1px 1px 0px;
+    border-radius: 10px;
     color: rgb(20, 24, 35);
     direction: ltr;
     display: block;
     font-family: helvetica, arial, 'lucida grande', sans-serif;
     font-size: 12px;
-    height: auto;
+    height: 366px;
     line-height: 16.0799999237061px;
     overflow-x: hidden;
     overflow-y: hidden;
@@ -71,7 +78,7 @@
     line-height: 0px;
     position: relative;
     text-align: left;
-    width: 470px;
+    width: 100%;
     word-wrap: break-word;
   background:grey;
   
@@ -106,15 +113,15 @@
     font-family: Georgia, 'lucida grande', tahoma, verdana, arial, sans-serif;
     font-size: 18px;
     font-weight: 500;
-    height: 44px;
+    height: auto;
     line-height: 22px;
     margin-bottom: 5px;
     max-height: 110px;
-    overflow-x: hidden;
+    overflow-wrap: normal;
     overflow-y: hidden;
     text-align: left;
     text-decoration: none;
-    width: 446px;
+    width: 100%;
     word-wrap: break-word;
   
     }
@@ -162,7 +169,7 @@
   .fb-group-picrow{
         color: rgb(20, 24, 35);
     direction: ltr;
-    display: block;
+    display: flex;
     font-family: helvetica, arial, 'lucida grande', sans-serif;
     font-size: 12px;
     height: 40px;
@@ -230,7 +237,7 @@
     width: 422px;
   }
   .fb-group-picrow img{
-    
+    border: 1px solid black;
     display: block;
     border-radius: 40px;
     height: 40px;
