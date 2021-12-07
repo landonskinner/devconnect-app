@@ -4,7 +4,8 @@ import styled from "styled-components"
 import githublogo from "../images/github-logo.png"
 import linkedinlogo from "../images/linkedin-logo.png"
 
-function AccountPage({name}) {
+
+function AccountPage({name, search}) {
 
     const [userData, setUserData] = useState('')
 
@@ -40,9 +41,10 @@ function AccountPage({name}) {
         
             <div className="post-container">
                 <h3>Your Posts:</h3>
-                <PostContainer name={name} />
+                <PostContainer name={name} search={search}/>
             </div>
         </AccountHeader>
+
         </div>
     )
 }
