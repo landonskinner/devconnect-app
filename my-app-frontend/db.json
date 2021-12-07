@@ -33,7 +33,7 @@
         "username": "bobsmith",
         "password": "123456",
         "bio": "cool programmer",
-        "img": "hello.jpg"
+        "img": "https://thepowerofthedream.org/wp-content/uploads/2015/09/generic-profile-picture.jpg"
     },
     {
         "id": 2,
@@ -41,7 +41,7 @@
         "username": "joe123",
         "password": "hello1",
         "bio": "tired",
-        "img": "hello.jpg"
+        "img": "https://thepowerofthedream.org/wp-content/uploads/2015/09/generic-profile-picture.jpg"
     },
     {
         "id": 3,
@@ -49,7 +49,7 @@
         "username": "maryisfun",
         "password": "ilovecats",
         "bio": "cats",
-        "img": "hello.jpg"
+        "img": "https://thepowerofthedream.org/wp-content/uploads/2015/09/generic-profile-picture.jpg"
     }
     ]
 }
