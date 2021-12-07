@@ -1,9 +1,9 @@
 import PostContainer from "./PostContainer"
 
-function AccountPage({name}) {
+function AccountPage({ name, search }) {
     return (
         <div>
-            <PostContainer name={name} />
+            <PostContainer name={name} search={search} />
         </div>
     )
 }
