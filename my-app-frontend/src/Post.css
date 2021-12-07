@@ -1,31 +1,10 @@
 .mock-outer{
     background-color: rgb(255, 255, 255);
-    border-bottom-color: rgb(208, 209, 213);
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-image-outset: 0px;
-    border-image-repeat: stretch;
-    border-image-slice: 100%;
-    border-image-source: none;
-    border-image-width: 1;
-    border-left-color: rgb(223, 224, 228);
-    border-left-style: solid;
-    border-left-width: 1px;
-    border-right-color: rgb(223, 224, 228);
-    border-right-style: solid;
-    border-right-width: 1px;
-    border-top-color: rgb(229, 230, 233);
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    border-top-style: solid;
-    border-top-width: 1px;
     color: rgb(20, 24, 35);
     display: block;
     font-family: helvetica, arial, 'lucida grande', sans-serif;
     font-size: 12px;
-    height: 469px;
+    height: auto;
     line-height: 16.0799999237061px;
     margin-bottom: 10px;
     padding-bottom: 12px;
@@ -33,14 +12,15 @@
     padding-right: 12px;
     padding-top: 12px;
     text-align: left;
-    width: 470px;
+    width: auto;
     word-wrap: break-word;
   
     }
     .mock-inner{
         direction: ltr;
         display: block;
-        height: 473px;
+        height: auto;
+        width: auto;
     }
     
     .usertext{
@@ -70,13 +50,13 @@
     display: block;
     font-family: helvetica, arial, 'lucida grande', sans-serif;
     font-size: 12px;
-    height: 366px;
+    height: auto;
     line-height: 16.0799999237061px;
     overflow-x: hidden;
     overflow-y: hidden;
     position: relative;
     text-align: left;
-    width: 470px;
+    width: 100%;
     word-wrap: break-word;
     z-index: 0;
   
@@ -190,6 +170,7 @@
     margin-bottom: 11px;
     text-align: left;
   }
+
   .fbh5{
         color: rgb(20, 24, 35);
     direction: ltr;
@@ -249,33 +230,12 @@
     width: 422px;
   }
   .fb-group-picrow img{
-    border-bottom-color: rgb(59, 89, 152);
-    border-bottom-style: none;
-    border-bottom-width: 0px;
-    border-image-outset: 0px;
-    border-image-repeat: stretch;
-    border-image-slice: 100%;
-    border-image-source: none;
-    border-image-width: 1;
-    border-left-color: rgb(59, 89, 152);
-    border-left-style: none;
-    border-left-width: 0px;
-    border-right-color: rgb(59, 89, 152);
-    border-right-style: none;
-    border-right-width: 0px;
-    border-top-color: rgb(59, 89, 152);
-    border-top-style: none;
-    border-top-width: 0px;
-    color: rgb(59, 89, 152);
-    cursor: pointer;
-    direction: ltr;
+    
     display: block;
-    font-family: helvetica, arial, 'lucida grande', sans-serif;
-    font-size: 12px;
+    border-radius: 40px;
     height: 40px;
-    line-height: 16.0799999237061px;
     text-align: left;
-    width: 40px;
     float:left;
-    padding-right:8px  
+    margin-right: 8px;
+    
   }
