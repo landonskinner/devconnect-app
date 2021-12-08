@@ -12,11 +12,13 @@ code {
     monospace;
 }
 
+/* Global */
+
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap');
+
 /* Registration & Login */
 
-.login-container {
-  background: #6A7AFF;
-  opacity: 75%;
+.form-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,24 +31,37 @@ code {
   width: 30%;
   margin: auto;
   border-radius: 3%;
+  border: 3px solid black;
+  box-shadow: 10px 10px grey;
+  padding: 7px;
 }
 
-form {
+.signin-register {
   width: 80%;
   text-align: center;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 label {
   font-size: 2rem;
-  padding: 5px;
+  padding: 2px;
 }
 
-h3 {
+.signin-title {
+  margin-bottom: 15px;
+}
+
+.signup-title {
   margin-bottom: 10px;
 }
 
 .login-details {
+  width: 80%;
+  height: 35px;
+  font-size: 1rem;
+}
+
+.registration-details {
   width: 80%;
   height: 35px;
   font-size: 1rem;
@@ -62,10 +77,50 @@ h3 {
   background-color: #6dc9fe;
   color: black;
   outline: none;
+  opacity: 80%;
 }
 
 .submit:hover {
-  background-color: white;
-  color: blue
+  background-color: black;
+  color: white;
 }
+
+.reg-link {
+  text-decoration: none;
+}
+
+/* Home Page */
+
+.page-title {
+  font-size: 4rem;
+  font-family: 'Inconsolata', monospace;
+}
+
+.account-link {
+  margin: 10px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 15px;
+  line-height: 25px;
+  box-shadow: 7px 7px grey;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.account-link:hover {
+  box-shadow: 7px 7px black;
+}
+
+.account-link:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.home-float {
+  float: left;
+  justify-content: space-evenly;
+  width: 30%;
+}
+
 

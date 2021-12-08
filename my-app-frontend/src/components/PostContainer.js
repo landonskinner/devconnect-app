@@ -11,11 +11,11 @@ function PostContainer({ search }) {
         .then((posts) => setPosts(posts))
     }, [])
 
-    const filteredPosts = posts.filter(post => {
-        return post.header.includes(search)
-    });
+    // const filteredPosts = posts.filter(post => {
+    //     return post.header.includes(search)
+    // });
 
-    const renderPosts = filteredPosts.map(post => {
+    const renderPosts = posts.map(post => {
         return <Post key={post.id} post={post} />
     })
 
