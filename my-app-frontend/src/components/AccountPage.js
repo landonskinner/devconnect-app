@@ -4,6 +4,7 @@ import styled from "styled-components"
 import githublogo from "../images/github-logo.png"
 import linkedinlogo from "../images/linkedin-logo.png"
 import NavBar from './NavBar'
+import NewPostForm from './NewPostForm'
 
 
 function AccountPage({name, search}) {
@@ -23,6 +24,7 @@ function AccountPage({name, search}) {
     return (
         <div>
         <AccountHeader>
+            
         <div className="head">
             <img className="profile-photo" src={userData.img} />
             <div className="names">
@@ -42,7 +44,9 @@ function AccountPage({name, search}) {
             <div id="nav">
                 <NavBar />
             </div>
+            
             <div className="post-container">
+            <NewPostForm id={id} />
                 <h3>Your Posts:</h3>
                 <PostContainer name={name} search={search}/>
             </div>
@@ -102,6 +106,7 @@ const AccountHeader = styled.div`
         align-items: center;
         text-align: center;
         box-shadow: 7px 7px grey;
+        font-weight: bold;
     }
 
 
