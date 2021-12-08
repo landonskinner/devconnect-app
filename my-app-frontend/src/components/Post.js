@@ -8,7 +8,7 @@ function Post({
   post: { id, header, image_url, content, like_count, user_id, created_at},
 }) {
   const [userInfo, setUserInfo] = useState("");
-  const [isFavorited, setIsFavorited] = useState(false);
+  const [isFavorited, setIsFavorited] = useState(true);
 
   useEffect(() => {
     fetch(`http://localhost:9292/users/${user_id}`)
@@ -21,46 +21,58 @@ function Post({
       });
   }, [user_id]);
 
-    const handleClick = (e) => {
-        // console.log(e.target.id)
-        // post request to data base containing post id
+  const test_id = 4
 
+    const handleClick = () => {
+      fetch('http://localhost:9292/favorites', {
+        method: 'POST',
+        headers: {"Content-Type": 'application/json'},
+        body: JSON.stringify({
+          user_id: test_id,
+          post_id: id 
+        }),
+      })
+      .then(res => res.json())
+      .then(() => {
+        console.log('success')
         setIsFavorited(true)
-    }
+      })
+  }
 
-    // function timeSince(date) {
+    
 
-    //   var seconds = Math.floor((new Date() - date) / 1000);
+    const handleUnfavorite = (e) => {
+      fetch('http://localhost:9292/favorites')
+      .then(resp => resp.json())
+      .then(data => {
+
+        const var1 = data.filter(post => {
+          return (post.user_id === test_id) && (post.post_id === id)
+        })
+        
+        if (var1 !== []) {
+          console.log(var1)
+          const fav_id = var1[0].id
+
+          fetch(`http://localhost:9292/favorites/${fav_id}`, {
+            method: 'DELETE'
+          })
+          .then(resp => resp.json())
+          .then(data => console.log(data))
+        } 
+        
+      })
+      setIsFavorited(false)
+      }
+        
+
+        
+      
+      
+  
+
+      
     
-    //   var interval = seconds / 31536000;
-    
-    //   if (interval > 1) {
-    //     return Math.floor(interval) + " years";
-    //   }
-    //   interval = seconds / 2592000;
-    //   if (interval > 1) {
-    //     return Math.floor(interval) + " months";
-    //   }
-    //   interval = seconds / 86400;
-    //   if (interval > 1) {
-    //     return Math.floor(interval) + " days";
-    //   }
-    //   interval = seconds / 3600;
-    //   if (interval > 1) {
-    //     return Math.floor(interval) + " hours";
-    //   }
-    //   interval = seconds / 60;
-    //   if (interval > 1) {
-    //     return Math.floor(interval) + " minutes";
-    //   }
-    //   return Math.floor(seconds) + " seconds";
-    // }
-    // console.log(created_at)
-    // var aDay = 24*60*60*1000;
-    // console.log(timeSince(new Date(Date.now()-aDay)));
-    // console.log(timeSince(new Date(Date.now()-aDay*2)));
-// console.log(created_at)
-// created_at.slice(11, 23)
   return (
     <PostCard>
       <div className="mock-outer">
@@ -68,14 +80,14 @@ function Post({
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
             {isFavorited ? (
               <button
-                onClick={() => setIsFavorited(false)}
+                onClick={(e) => handleUnfavorite(e)}
                 className="emoji-button favorite active"
               >
                 ★
               </button>
             ) : (
               <button id={id}
-                onClick={(e) => handleClick(e)}
+                onClick={handleClick}
                 className="emoji-button favorite"
               >
                 ☆
