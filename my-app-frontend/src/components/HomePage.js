@@ -7,7 +7,7 @@ function HomePage(){
   const [userData, setUserData] = useState(" ")
 
   useEffect(() => {
-    fetch('http://localhost:4000/users')
+    fetch(`http://localhost:4000/users/`)
     .then(res => res.json())
     .then(data => setUserData(data))
   }, [])

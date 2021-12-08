@@ -6,7 +6,7 @@ function PostContainer({ search }) {
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:4000/posts')
+        fetch('http://localhost:9292/posts')
         .then(resp => resp.json())
         .then((posts) => setPosts(posts))
     }, [])
@@ -14,7 +14,7 @@ function PostContainer({ search }) {
     // const filteredPosts = posts.filter(post => {
     //     return post.header.includes(search)
     // });
-
+    console.log(posts)
     const renderPosts = posts.map(post => {
         return <Post key={post.id} post={post} />
     })
