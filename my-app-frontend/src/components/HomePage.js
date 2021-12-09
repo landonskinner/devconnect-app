@@ -3,15 +3,15 @@ import {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 
 
-function HomePage({search}){
+function HomePage({search, loginId}){
 
   const [userData, setUserData] = useState(" ")
 
   useEffect(() => {
-    fetch(`http://localhost:9292/users/`)
+    fetch(`http://localhost:9292/users/${loginId}`)
     .then(res => res.json())
     .then(data => setUserData(data)
-  )}, [])
+  )}, [loginId])
 
   return(
     <div className="home-container">
@@ -21,11 +21,11 @@ function HomePage({search}){
       </div>
       <div>
 
-        <img className="prof-photo-home" src={userData.image_url} />
+        <img className="prof-photo-home" src={userData[0].image_url} />
         <Link to="/account" className="account-link">My Account</Link>
       </div>
       <div className="home-posts">
-        <PostContainer search={search}/>
+        <PostContainer search={search} page="home" loginId={loginId}/>
       </div>
     </div>
   )

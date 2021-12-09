@@ -3,7 +3,7 @@ import Post from './Post';
 import FavoritePost from './FavoritePost';
 
 
-function FavoritesContainer({ search }) {
+function FavoritesContainer({ search, loginId }) {
 
     const [posts, setPosts] = useState([])
 
@@ -13,7 +13,7 @@ function FavoritesContainer({ search }) {
         fetch('http://localhost:9292/favorites')
         .then(resp => resp.json())
         .then((posts) => {
-            const favs = posts.filter(post => post.user_id === test_id)
+            const favs = posts.filter(post => post.user_id === loginId)
             setPosts(favs)
         })
     }, [])
