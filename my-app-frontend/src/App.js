@@ -15,6 +15,7 @@ function App() {
   const [loginId, setLoginId] = useState('')
 
   function handleSearch(newSearch){
+    console.log(newSearch)
     setSearch(newSearch)
   }
 
@@ -42,14 +43,16 @@ function App() {
       <RegistrationPage handleLogin={handleLogin} />
     </Route>
     <Route path="/home">
-      <SearchBar onSearch={handleSearch} />
-      <HomePage/>
+      <SearchBar  search={search} onSearch={handleSearch}/>
+      <HomePage search={search}/>
     </Route>
     <Route path="/account">
+      <SearchBar  search={search} onSearch={handleSearch}/>
       <AccountPage name="Landon" search={search} />
     </Route>
     <Route path="/favorites">
-      <FavoritesPage />
+      <SearchBar  search={search} onSearch={handleSearch}/>
+      <FavoritesPage search={search} />
     </Route>
   </Switch>
 </div>

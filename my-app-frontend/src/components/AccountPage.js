@@ -19,7 +19,7 @@ function AccountPage({name, search}) {
         .then(resp => resp.json())
         .then(data => setUserData(data))
     }, [])
-
+console.log(search)
 
     return (
         <div>
