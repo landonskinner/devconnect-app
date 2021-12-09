@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Switch, Route} from 'react-router-dom';
 import './App.css';
 import AccountPage from './components/AccountPage';
@@ -18,11 +18,19 @@ function App() {
     setSearch(newSearch)
   }
 
+
   const handleLogin = (login) => {
     setLoginId(login[0].id)
   }
 
   console.log(loginId)
+
+  useEffect(() => {
+    fetch('http://localhost:9292/favorites')
+    .then(resp => resp.json())
+    .then(data => console.log(data))
+  })
+
 
   return (
 <div className="App">

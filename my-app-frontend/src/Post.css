@@ -81,6 +81,8 @@
     width: 100%;
     word-wrap: break-word;
   background:grey;
+  overflow-y: hidden;
+  overflow-x: hidden;
   
     }
     .mock-title{
