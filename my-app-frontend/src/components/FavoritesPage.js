@@ -57,8 +57,6 @@ function FavoritesPage({ search }) {
 
 
   const AccountHeader = styled.div`
-
-
   .profile-photo {
       border-radius: 150px;
       border: 1px solid black;
@@ -67,30 +65,25 @@ function FavoritesPage({ search }) {
       height: 150px;
       box-shadow: 4px 4px lightgrey;
   }
-
   #name {
       font-size: 40px;
       margin: 5px;
       text-shadow: 3px 3px lightgrey;
   }
-
   #username {
       font-size: 28px;
       margin: 5px;
       text-shadow: 3px 3px lightgrey;
   }
-
   .head {
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
   }
-
   .names {
       display: block;
   }
-
   .bio {
       background-color: black;
       color: white;
@@ -105,8 +98,6 @@ function FavoritesPage({ search }) {
       text-align: center;
       box-shadow: 7px 7px grey;
   }
-
-
   .follows {
       position: relative;
       left: 70%; 
@@ -116,12 +107,10 @@ function FavoritesPage({ search }) {
       border: 1px solid black;
       border-radius: 15px;
   }
-
   .post-container {
       position: relative;
       bottom: 175px;
   }
-
   .post-container h3 {
       font-size: 24px;
       display: flex;
@@ -130,7 +119,6 @@ function FavoritesPage({ search }) {
       text-align: center;
       z-index: -1;
   }
-
   #nav {
       position: relative;
       bottom: 115px;
@@ -138,5 +126,4 @@ function FavoritesPage({ search }) {
       width: 25%;
       z-index: 1;
   }
-
 `
