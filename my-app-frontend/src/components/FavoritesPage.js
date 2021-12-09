@@ -25,8 +25,8 @@ function FavoritesPage({ search }) {
         <div className="head">
             <img className="profile-photo" src={userData.img} />
             <div className="names">
-                <h1 id="name">{userData.name}</h1>
-                <h2 id="username">@{userData.username}</h2>
+                <h1 id="name1">{userData.name}</h1>
+                <h2 id="username1">@{userData.username}</h2>
                 <a href=""><img src={githublogo} alt="Github Link" style={{width: "30px", height: "30px"}}/></a>
             <a href=""><img src={linkedinlogo} alt="LinkedIn Link" style={{width: "30px", height: "30px"}}/></a>
                 </div>
@@ -65,12 +65,17 @@ function FavoritesPage({ search }) {
       height: 150px;
       box-shadow: 4px 4px lightgrey;
   }
-  #name {
+
+
+  #name1 {
+
       font-size: 40px;
       margin: 5px;
       text-shadow: 3px 3px lightgrey;
-  }
-  #username {
+}
+
+  #username1 {
+
       font-size: 28px;
       margin: 5px;
       text-shadow: 3px 3px lightgrey;

@@ -8,7 +8,7 @@ function HomePage({search}){
   const [userData, setUserData] = useState(" ")
 
   useEffect(() => {
-    fetch(`http://localhost:9292/users`)
+    fetch(`http://localhost:9292/users/`)
     .then(res => res.json())
     .then(data => setUserData(data)
   )}, [])
@@ -20,7 +20,8 @@ function HomePage({search}){
         <h2 className="page-title">Dev<em>Connect</em></h2>
       </div>
       <div>
-        <img className="prof-photo-home" src="https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png" />
+
+        <img className="prof-photo-home" src={userData.image_url} />
         <Link to="/account" className="account-link">My Account</Link>
       </div>
       <div className="home-posts">

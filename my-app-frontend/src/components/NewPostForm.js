@@ -6,9 +6,9 @@ function NewPostForm({id}) {
     const [postData, setPostData] = useState({
         header: "",
         description: "",
-        img: "",
-        content: "",
-        link: "",
+        image_url: "",
+        content_link: "",
+        like_count: 0,
         user_id: id
     })
 
@@ -21,7 +21,15 @@ function NewPostForm({id}) {
     const handlePost = (e) => {
         e.preventDefault()
         console.log(postData)
-        // post request to database
+        
+        fetch('http://localhost:9292/posts', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(postData[0]),
+        })
+        .then(resp => resp.json())
+        .then(data => console.log(data))
+
         setIsSelected(false)
 
         
@@ -30,7 +38,7 @@ function NewPostForm({id}) {
     const handleChange = (e) => {
         setPostData({
             ...postData,
-            [e.target.id]: e.target.value
+            [e.target.id]: e.target.value,
         })
     }
 
@@ -45,17 +53,16 @@ function NewPostForm({id}) {
                 <input
                 type="text"
                 id="header"
-                placeholder="Tell us what your post is about!"
+                placeholder="Give us the gist!"
                 value={postData.header}
                 onChange={(e) => handleChange(e)}
                 />
             </label>
             <label>
                 Post Description:
-                <input
-                type="text"
+                <textarea
                 id="description"
-                placeholder="Provide us some details!"
+                placeholder="Tell the dev community what's so important about your post!"
                 value={postData.desciption}
                 onChange={(e) => handleChange(e)}
                 />
@@ -64,19 +71,10 @@ function NewPostForm({id}) {
                 Post Image:
                 <input
                 type="file"
-                id="img"
+                id="image_url"
                 accept="image/png, image/jpeg"
                 placeholder="Give an image link"
-                value={postData.img}
-                onChange={(e) => handleChange(e)}
-                />
-            </label>
-            <label>
-                Post Content:
-                <textarea
-                id="content"
-                placeholder="Tell the dev community what's so important about your post!"
-                value={postData.content}
+                value={postData.image_url}
                 onChange={(e) => handleChange(e)}
                 />
             </label>
@@ -84,9 +82,9 @@ function NewPostForm({id}) {
                 Post Media Link:
                 <input
                 type="text"
-                id="link"
-                placeholder="Give us the link to the resource you want to share!"
-                value={postData.link}
+                id="content_link"
+                placeholder="Link us to your resource!"
+                value={postData.content_link}
                 onChange={(e) => handleChange(e)}
                 />
             </label>

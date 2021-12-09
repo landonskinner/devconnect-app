@@ -16,10 +16,12 @@ export default NavBar
 
 const NavBarStyle = styled.div`
 
+    
     a {
         list-style-type: none;
         margin: 0;
         padding: 0;
+
     }
 
     li {
@@ -30,6 +32,7 @@ const NavBarStyle = styled.div`
         line-height: 25px;
         box-shadow: 7px 7px grey;
         font-weight: bold;
+        background: white;
     }
 
     a:link {

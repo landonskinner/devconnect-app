@@ -5,7 +5,7 @@ import styled from "styled-components";
 import "../Post.css";
 
 function Post({
-  post: { id, header, image_url, content, like_count, user_id, created_at},
+  post: { id, header, description, image_url, content_link, like_count, user_id, created_at},
 }) {
   const [userInfo, setUserInfo] = useState("");
   const [isFavorited, setIsFavorited] = useState(false);
@@ -37,11 +37,11 @@ function Post({
       .then(() => {
         console.log('success')
         setIsFavorited(true)
+
       })
   }
 
     
-
     const handleUnfavorite = (e) => {
       fetch('http://localhost:9292/favorites')
       .then(resp => resp.json())
@@ -63,6 +63,7 @@ function Post({
     })
       setIsFavorited(false)
     }
+
 
   return (
     <PostCard>
@@ -94,6 +95,7 @@ function Post({
               </div>
             </div>
           </div>
+          <a href={content_link} target="_blank">
           <div className="mock-img-all">
             <div className="mock-img">
               <img src={image_url}/>
@@ -103,10 +105,11 @@ function Post({
                 <div className="mock-title-top">
                   <p>{header}</p>
                 </div>
-                <div className="mock-title-mid">Description: {content}</div>
+                <div className="mock-title-mid">Description: {description}</div>
               </div>
             </div>
           </div>
+          </a>
           <p>♡ {like_count}</p>
         </div>
       </div>
@@ -125,4 +128,6 @@ const PostCard = styled.div`
   border-radius: 20px;
   padding: 7px;
   box-shadow: 10px 10px grey;
+  background: white;
 `;
+

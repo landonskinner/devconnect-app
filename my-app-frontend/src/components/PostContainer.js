@@ -1,15 +1,24 @@
 import {useState, useEffect} from 'react'
 import Post from "./Post"
 
-function PostContainer({ search }) {
+function PostContainer({ id, page, search }) {
 
     const [posts, setPosts] = useState([])
 
+    
+
+    
     useEffect(() => {
-        fetch('http://localhost:9292/posts')
-        .then(resp => resp.json())
-        .then((posts) => setPosts(posts))
-    }, [])
+        if (page === "profile") {
+            fetch(`http://localhost:9292/posts/${id}`)
+            .then(resp => resp.json())
+            .then((posts) => setPosts(posts))
+        } else if (page === "home") {
+            fetch(`http://localhost:9292/posts`)
+            .then(resp => resp.json())
+            .then((posts) => setPosts(posts))
+        }
+    }, [id])
 
 
     const filteredPosts = posts.filter(post => {
