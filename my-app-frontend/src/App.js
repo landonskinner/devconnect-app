@@ -12,10 +12,18 @@ import HomePage from './components/HomePage';
 
 function App() {
   const [search, setSearch] = useState("")
+  const [loginId, setLoginId] = useState('')
 
   function handleSearch(newSearch){
     setSearch(newSearch)
   }
+
+
+  const handleLogin = (login) => {
+    setLoginId(login[0].id)
+  }
+
+  console.log(loginId)
 
   useEffect(() => {
     fetch('http://localhost:9292/favorites')
@@ -23,14 +31,15 @@ function App() {
     .then(data => console.log(data))
   })
 
+
   return (
 <div className="App">
   <Switch>
     <Route exact path="/">
-      <LandingPage />
+      <LandingPage handleLogin={handleLogin} />
     </Route>
     <Route path="/register">
-      <RegistrationPage />
+      <RegistrationPage handleLogin={handleLogin} />
     </Route>
     <Route path="/home">
       <SearchBar onSearch={handleSearch} />
