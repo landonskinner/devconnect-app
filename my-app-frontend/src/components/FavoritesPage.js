@@ -6,7 +6,7 @@ import githublogo from "../images/github-logo.png"
 import linkedinlogo from "../images/linkedin-logo.png"
 import FavoritesContainer from './FavoritesContainer';
 
-function FavoritesPage() {
+function FavoritesPage({ search }) {
     const [userData, setUserData] = useState('')
 
     const id = 1
@@ -42,9 +42,9 @@ function FavoritesPage() {
                 <NavBar />
             </div>
             <div className="post-container">
-              <SearchBar />
+              
                 <h3>Your Favorites:</h3>
-                <FavoritesContainer />
+                <FavoritesContainer search={search} />
             </div>
         </AccountHeader>
 

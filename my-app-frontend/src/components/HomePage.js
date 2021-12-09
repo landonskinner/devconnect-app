@@ -2,7 +2,8 @@ import PostContainer from "./PostContainer";
 import {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 
-function HomePage(){
+
+function HomePage({search}){
 
   const [userData, setUserData] = useState(" ")
 
@@ -14,6 +15,7 @@ function HomePage(){
 
   return(
     <div className="home-container">
+      
       <div className="home-title">
         <h2 className="page-title">Dev<em>Connect</em></h2>
       </div>
@@ -22,7 +24,7 @@ function HomePage(){
         <Link to="/account" className="account-link">My Account</Link>
       </div>
       <div className="home-posts">
-        <PostContainer/>
+        <PostContainer search={search}/>
       </div>
     </div>
   )
