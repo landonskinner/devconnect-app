@@ -12,19 +12,26 @@ import HomePage from './components/HomePage';
 
 function App() {
   const [search, setSearch] = useState("")
+  const [loginId, setLoginId] = useState('')
 
   function handleSearch(newSearch){
     setSearch(newSearch)
   }
 
+  const handleLogin = (login) => {
+    setLoginId(login[0].id)
+  }
+
+  console.log(loginId)
+
   return (
 <div className="App">
   <Switch>
     <Route exact path="/">
-      <LandingPage />
+      <LandingPage handleLogin={handleLogin} />
     </Route>
     <Route path="/register">
-      <RegistrationPage />
+      <RegistrationPage handleLogin={handleLogin} />
     </Route>
     <Route path="/home">
       <SearchBar onSearch={handleSearch} />

@@ -1,8 +1,34 @@
 import {Link} from 'react-router-dom'
+import {useState} from 'react'
 
-function RegistrationPage(){
+function RegistrationPage({handleLogin}){
 
-  const handleSubmit = (e) => e.preventDefault()
+  const [newUser, setNewUser] = useState({
+    name: "",
+    username: "",
+    email: "",
+    password: ""
+  })
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    fetch(`http://localhost:9292/users`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(newUser)
+    })
+    .then(resp => resp.json())
+    .then(data => handleLogin([data]))
+  }
+
+  const handleChange = (e) => {
+    setNewUser({
+        ...newUser,
+        [e.target.id]: e.target.value
+    })
+}
 
   return(
     <>
@@ -11,24 +37,24 @@ function RegistrationPage(){
         <form className="signin-register" onSubmit={handleSubmit}>
           <h3 className="signup-title">Sign up</h3>
           <div className="form-input">
-            <label for="name">Name:</label><br/>
-            <input type="text" className="registration-details" placeholder="Name" />
+            <label className="form-label" htmlFor="name">Name:</label><br/>
+            <input type="text" id="name" className="registration-details" value={newUser.name} onChange={(e) => handleChange(e)} placeholder="Name" />
           </div>
           <div className="form-input">
-            <label for="user name">User name:</label><br/>
-            <input type="text" className="registration-details" placeholder="User name" />
+            <label className="form-label" htmlFor="user name">User name:</label><br/>
+            <input type="text" id="username" className="registration-details" value={newUser.username} onChange={(e) => handleChange(e)} placeholder="User name" />
           </div>
           <div className="form-input">
-            <label for="email">Email:</label><br/>
-            <input type="email" className="registration-details" placeholder="Enter email" />
+            <label className="form-label" htmlFor="email">Email:</label><br/>
+            <input type="email" id="email" className="registration-details" value={newUser.email} onChange={(e) => handleChange(e)} placeholder="Enter email" />
           </div>
           <div className="form-input">
-            <label for="password">Password:</label><br/>
-            <input type="password" className="registration-details" placeholder="Enter password" />
+            <label className="form-label" htmlFor="password">Password:</label><br/>
+            <input type="password" id="password" className="registration-details" value={newUser.password} onChange={(e) => handleChange(e)} placeholder="Enter password" />
           </div>
-          <Link to="/home">
+          {/* <Link to="/home"> */}
             <button type="submit" className="submit">Register</button>
-          </Link>
+          {/* </Link> */}
           <p className="link-text">
             Already registered ? <Link class="reg-link" to="/">sign in</Link>
           </p>
