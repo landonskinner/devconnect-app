@@ -6,7 +6,7 @@ import githublogo from "../images/github-logo.png"
 import linkedinlogo from "../images/linkedin-logo.png"
 import FavoritesContainer from './FavoritesContainer';
 
-function FavoritesPage() {
+function FavoritesPage({ search }) {
     const [userData, setUserData] = useState('')
 
     const id = 1
@@ -42,9 +42,9 @@ function FavoritesPage() {
                 <NavBar />
             </div>
             <div className="post-container">
-              <SearchBar />
+              
                 <h3>Your Favorites:</h3>
-                <FavoritesContainer />
+                <FavoritesContainer search={search} />
             </div>
         </AccountHeader>
 
@@ -57,8 +57,6 @@ function FavoritesPage() {
 
 
   const AccountHeader = styled.div`
-
-
   .profile-photo {
       border-radius: 150px;
       border: 1px solid black;
@@ -68,29 +66,29 @@ function FavoritesPage() {
       box-shadow: 4px 4px lightgrey;
   }
 
+
   #name1 {
+
       font-size: 40px;
       margin: 5px;
       text-shadow: 3px 3px lightgrey;
-  }
+}
 
   #username1 {
+
       font-size: 28px;
       margin: 5px;
       text-shadow: 3px 3px lightgrey;
   }
-
   .head {
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
   }
-
   .names {
       display: block;
   }
-
   .bio {
       background-color: black;
       color: white;
@@ -105,8 +103,6 @@ function FavoritesPage() {
       text-align: center;
       box-shadow: 7px 7px grey;
   }
-
-
   .follows {
       position: relative;
       left: 70%; 
@@ -116,12 +112,10 @@ function FavoritesPage() {
       border: 1px solid black;
       border-radius: 15px;
   }
-
   .post-container {
       position: relative;
       bottom: 175px;
   }
-
   .post-container h3 {
       font-size: 24px;
       display: flex;
@@ -130,7 +124,6 @@ function FavoritesPage() {
       text-align: center;
       z-index: -1;
   }
-
   #nav {
       position: relative;
       bottom: 115px;
@@ -138,5 +131,4 @@ function FavoritesPage() {
       width: 25%;
       z-index: 1;
   }
-
 `

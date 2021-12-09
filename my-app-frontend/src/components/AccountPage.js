@@ -19,8 +19,10 @@ function AccountPage({name, search}) {
         fetch(`http://localhost:9292/users/${id}`)
         .then(resp => resp.json())
         .then(data => setUserData(data))
+
     }, [id])
 console.log(userData)
+
 
 
     if (!!userData === false) return <h3>Loading...</h3>
@@ -61,8 +63,6 @@ console.log(userData)
 export default AccountPage
 
 const AccountHeader = styled.div`
-
-
     .profile-photo {
         border-radius: 150px;
         border: 1px solid black;
@@ -71,30 +71,25 @@ const AccountHeader = styled.div`
         height: 150px;
         box-shadow: 4px 4px lightgrey;
     }
-
     #name {
         font-size: 40px;
         margin: 5px;
         text-shadow: 3px 3px lightgrey;
     }
-
     #username {
         font-size: 28px;
         margin: 5px;
         text-shadow: 3px 3px lightgrey;
     }
-
     .head {
         display: flex;
         justify-content: center;
         align-items: center;
         text-align: center;
     }
-
     .names {
         display: block;
     }
-
     .bio {
         background-color: black;
         color: white;
@@ -124,13 +119,11 @@ const AccountHeader = styled.div`
         box-shadow: 7px 7px grey;
         cursor: pointer;
     }
-
     .post-container {
         position: relative;
         bottom: 175px;
         margin: 0;
     }
-
     .post-container h3 {
         font-size: 24px;
         display: flex;
@@ -139,7 +132,6 @@ const AccountHeader = styled.div`
         text-align: center;
         z-index: -1;
     }
-
     #nav {
         position: relative;
         bottom: 80px;
@@ -151,4 +143,6 @@ const AccountHeader = styled.div`
     }
 
 
+
 `
+

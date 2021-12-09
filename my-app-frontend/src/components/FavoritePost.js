@@ -4,14 +4,15 @@ import styled from "styled-components";
 
 import "../Post.css";
 
-function Post({
-  post: { id, header, description, image_url, content_link, like_count, user_id, created_at},
+function FavoritePost({
+  fav: {id, user, post, user_id, post_id},
 }) {
   const [userInfo, setUserInfo] = useState("");
-  const [isFavorited, setIsFavorited] = useState(false);
+  const [postInfo, setPostInfo] = useState("");
+  const [isFavorited, setIsFavorited] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:9292/users/${user_id}`)
+    fetch(`http://localhost:9292/users/${post.user_id}`)
       .then((resp) => resp.json())
       .then((data) => {
         setUserInfo({
@@ -19,6 +20,19 @@ function Post({
           img: data[0].image_url,
         });
       });
+    
+    fetch(`http://localhost:9292/posts/${post_id}`)
+    .then(resp => resp.json())
+    .then(data => {
+        setPostInfo({
+            header: data[0].header,
+            description: data[0].description,
+            image_url: data[0].image_url,
+            content: data[0].content,
+            like_count: data[0].description,
+            user_id: data[0].user_id
+        })
+    })
   }, [user_id]);
 
   const test_id = 4
@@ -30,25 +44,25 @@ function Post({
         headers: {"Content-Type": 'application/json'},
         body: JSON.stringify({
           user_id: test_id,
-          post_id: id 
+          post_id: post_id 
         }),
       })
       .then(res => res.json())
       .then(() => {
         console.log('success')
         setIsFavorited(true)
-
       })
   }
 
     
+
     const handleUnfavorite = (e) => {
       fetch('http://localhost:9292/favorites')
       .then(resp => resp.json())
       .then(data => {
 
         const var1 = data.filter(post => {
-          return (post.user_id === test_id) && (post.post_id === id)
+          return (post.user_id === test_id) && (post.post_id === post_id)
         })
         
         if (var1 !== []) {
@@ -57,13 +71,13 @@ function Post({
               method: 'DELETE'
             })
             .then(resp => resp.json())
-            .then(data => console.log(data))
+            .then(data => window.location.reload(false))
         })
       }
     })
       setIsFavorited(false)
+      
     }
-
 
   return (
     <PostCard>
@@ -95,29 +109,27 @@ function Post({
               </div>
             </div>
           </div>
-          <a href={content_link} target="_blank">
           <div className="mock-img-all">
             <div className="mock-img">
-              <img src={image_url}/>
+              <img src={postInfo.image_url}/>
             </div>
             <div className="mock-title">
               <div className="mock-title2">
                 <div className="mock-title-top">
-                  <p>{header}</p>
+                  <p>{postInfo.header}</p>
                 </div>
-                <div className="mock-title-mid">Description: {description}</div>
+                <div className="mock-title-mid">Description: {postInfo.content}</div>
               </div>
             </div>
           </div>
-          </a>
-          <p>♡ {like_count}</p>
+          <p>♡ {postInfo.like_count}</p>
         </div>
       </div>
     </PostCard>
   );
 }
 
-export default Post;
+export default FavoritePost;
 
 const PostCard = styled.div`
   border: 3px solid black;
@@ -128,6 +140,4 @@ const PostCard = styled.div`
   border-radius: 20px;
   padding: 7px;
   box-shadow: 10px 10px grey;
-  background: white;
 `;
-
