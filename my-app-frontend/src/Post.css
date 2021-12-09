@@ -46,6 +46,14 @@
     word-wrap: break-word;
   
     }
+
+    a:link {
+      text-decoration: none;
+    }
+
+    a:visited {
+      text-decoration: none;
+    }
     
     .mock-img-all{
       -webkit-box-shadow: rgba(0, 0, 0, 0.0980392) 0px 0px 0px 1.5px inset, rgba(0, 0, 0, 0.0470588) 0px 1px 1px 0px;
@@ -66,12 +74,12 @@
     width: 100%;
     word-wrap: break-word;
     z-index: 0;
+
   
     }
     .mock-img{
       color: rgb(20, 24, 35);
     direction: ltr;
-    display: block;
     font-family: helvetica, arial, 'lucida grande', sans-serif;
     font-size: 12px;
     height: 246px;
@@ -80,11 +88,22 @@
     text-align: left;
     width: 100%;
     word-wrap: break-word;
-  background:grey;
   overflow-y: hidden;
   overflow-x: hidden;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
   
     }
+
+    .mock-img img {
+
+        object-fit: cover;
+        min-width: 100%;
+        min-height: 100%
+    }
+
     .mock-title{
     color: rgb(20, 24, 35);
     direction: ltr;
@@ -138,7 +157,7 @@
     overflow-x: hidden;
     overflow-y: hidden;
     text-align: left;
-    width: 446px;
+    width: 100%;
     word-wrap: break-word;
   
     }

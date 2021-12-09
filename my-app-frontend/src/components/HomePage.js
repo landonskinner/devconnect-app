@@ -7,7 +7,7 @@ function HomePage(){
   const [userData, setUserData] = useState(" ")
 
   useEffect(() => {
-    fetch(`http://localhost:4000/users/`)
+    fetch(`http://localhost:9292/users/`)
     .then(res => res.json())
     .then(data => setUserData(data))
   }, [])
@@ -18,11 +18,11 @@ function HomePage(){
         <h2 className="page-title">Dev<em>Connect</em></h2>
       </div>
       <div>
-        <img className="prof-photo-home" src={userData.img} />
+        <img className="prof-photo-home" src={userData.image_url} />
         <Link to="/account" className="account-link">My Account</Link>
       </div>
       <div className="home-posts">
-        <PostContainer/>
+        <PostContainer page="home"/>
       </div>
     </div>
   )

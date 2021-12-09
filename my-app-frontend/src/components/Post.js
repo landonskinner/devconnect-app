@@ -5,7 +5,7 @@ import styled from "styled-components";
 import "../Post.css";
 
 function Post({
-  post: { id, header, image_url, content, like_count, user_id, created_at},
+  post: { id, header, description, image_url, content_link, like_count, user_id, created_at},
 }) {
   const [userInfo, setUserInfo] = useState("");
   const [isFavorited, setIsFavorited] = useState(false);
@@ -28,39 +28,7 @@ function Post({
         setIsFavorited(true)
     }
 
-    // function timeSince(date) {
-
-    //   var seconds = Math.floor((new Date() - date) / 1000);
-    
-    //   var interval = seconds / 31536000;
-    
-    //   if (interval > 1) {
-    //     return Math.floor(interval) + " years";
-    //   }
-    //   interval = seconds / 2592000;
-    //   if (interval > 1) {
-    //     return Math.floor(interval) + " months";
-    //   }
-    //   interval = seconds / 86400;
-    //   if (interval > 1) {
-    //     return Math.floor(interval) + " days";
-    //   }
-    //   interval = seconds / 3600;
-    //   if (interval > 1) {
-    //     return Math.floor(interval) + " hours";
-    //   }
-    //   interval = seconds / 60;
-    //   if (interval > 1) {
-    //     return Math.floor(interval) + " minutes";
-    //   }
-    //   return Math.floor(seconds) + " seconds";
-    // }
-    // console.log(created_at)
-    // var aDay = 24*60*60*1000;
-    // console.log(timeSince(new Date(Date.now()-aDay)));
-    // console.log(timeSince(new Date(Date.now()-aDay*2)));
-// console.log(created_at)
-// created_at.slice(11, 23)
+  
   return (
     <PostCard>
       <div className="mock-outer">
@@ -91,6 +59,7 @@ function Post({
               </div>
             </div>
           </div>
+          <a href={content_link} target="_blank">
           <div className="mock-img-all">
             <div className="mock-img">
               <img src={image_url}/>
@@ -100,10 +69,11 @@ function Post({
                 <div className="mock-title-top">
                   <p>{header}</p>
                 </div>
-                <div className="mock-title-mid">Description: {content}</div>
+                <div className="mock-title-mid">Description: {description}</div>
               </div>
             </div>
           </div>
+          </a>
           <p>♡ {like_count}</p>
         </div>
       </div>
@@ -122,4 +92,5 @@ const PostCard = styled.div`
   border-radius: 20px;
   padding: 7px;
   box-shadow: 10px 10px grey;
+  background: white;
 `;

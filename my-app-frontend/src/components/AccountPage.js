@@ -5,41 +5,43 @@ import githublogo from "../images/github-logo.png"
 import linkedinlogo from "../images/linkedin-logo.png"
 import NavBar from './NavBar'
 import NewPostForm from './NewPostForm'
+import EditProfileForm from './EditProfileForm'
 
 
 function AccountPage({name, search}) {
 
     const [userData, setUserData] = useState('')
 
-    const id = 1
+    const id = 55
     // ^^ will be set dynamically when user is logged in 
 
     useEffect(() => {
-        fetch(`http://localhost:4000/users/${id}`)
+        fetch(`http://localhost:9292/users/${id}`)
         .then(resp => resp.json())
         .then(data => setUserData(data))
-    }, [])
+    }, [id])
+console.log(userData)
 
+
+    if (!!userData === false) return <h3>Loading...</h3>
 
     return (
         <div>
         <AccountHeader>
             
         <div className="head">
-            <img className="profile-photo" src={userData.img} />
+            <img className="profile-photo" src={userData[0].image_url} />
             <div className="names">
-                <h1 id="name">{userData.name}</h1>
-                <h2 id="username">@{userData.username}</h2>
-                <a href=""><img src={githublogo} alt="Github Link" style={{width: "30px", height: "30px"}}/></a>
-            <a href=""><img src={linkedinlogo} alt="LinkedIn Link" style={{width: "30px", height: "30px"}}/></a>
+                <h1 id="name">{userData[0].name}</h1>
+                <h2 id="username">@{userData[0].username}</h2>
+                <a href={userData[0].github} target="_blank"><img src={githublogo} alt="Github Link" style={{width: "30px", height: "30px"}}/></a>
+                <a href={userData[0].linkedin} target="_blank"><img src={linkedinlogo} alt="LinkedIn Link" style={{width: "30px", height: "30px"}}/></a>
                 </div>
             </div>
+            
             <div>
-                <div className="bio">{userData.bio}</div>
-                <div className="follows">
-                <div>Followers: 25</div>
-                <div>Following: 32</div>
-                </div>
+                <div className="bio">{userData[0].bio}</div>
+                <EditProfileForm id={id} />
             </div>
             <div id="nav">
                 <NavBar />
@@ -48,7 +50,7 @@ function AccountPage({name, search}) {
             <div className="post-container">
             <NewPostForm id={id} />
                 <h3>Your Posts:</h3>
-                <PostContainer name={name} search={search}/>
+                <PostContainer id={id} page="profile" search={search}/>
             </div>
         </AccountHeader>
 
@@ -110,19 +112,23 @@ const AccountHeader = styled.div`
     }
 
 
-    .follows {
+    .edit {
         position: relative;
-        left: 70%; 
-        width: 25%;
+        left: 72%; 
+        width: 20%;
         margin: 20px;
         bottom: 58px;
         border: 1px solid black;
         border-radius: 15px;
+        padding: 8px;
+        box-shadow: 7px 7px grey;
+        cursor: pointer;
     }
 
     .post-container {
         position: relative;
         bottom: 175px;
+        margin: 0;
     }
 
     .post-container h3 {
@@ -136,10 +142,13 @@ const AccountHeader = styled.div`
 
     #nav {
         position: relative;
-        bottom: 115px;
+        bottom: 80px;
         left: 3%;
         width: 25%;
         z-index: 1;
+
+      
     }
+
 
 `
