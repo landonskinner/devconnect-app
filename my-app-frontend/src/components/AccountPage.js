@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import PostContainer from "./PostContainer"
+import AccountPostContainer from "./AccountPostContainer"
 import styled from "styled-components"
 import githublogo from "../images/github-logo.png"
 import linkedinlogo from "../images/linkedin-logo.png"
@@ -8,19 +8,18 @@ import NewPostForm from './NewPostForm'
 import EditProfileForm from './EditProfileForm'
 
 
-function AccountPage({name, search}) {
+
+function AccountPage({name, search, loginId}) {
 
     const [userData, setUserData] = useState('')
-
-    const id = 55
-    // ^^ will be set dynamically when user is logged in 
+ 
 
     useEffect(() => {
-        fetch(`http://localhost:9292/users/${id}`)
+        fetch(`http://localhost:9292/users/${loginId}`)
         .then(resp => resp.json())
         .then(data => setUserData(data))
 
-    }, [id])
+    }, [loginId])
 console.log(userData)
 
 
@@ -34,8 +33,8 @@ console.log(userData)
         <div className="head">
             <img className="profile-photo" src={userData[0].image_url} />
             <div className="names">
-                <h1 id="name">{userData[0].name}</h1>
-                <h2 id="username">@{userData[0].username}</h2>
+                <h1 id="name2">{userData[0].name}</h1>
+                <h2 id="username2">@{userData[0].username}</h2>
                 <a href={userData[0].github} target="_blank"><img src={githublogo} alt="Github Link" style={{width: "30px", height: "30px"}}/></a>
                 <a href={userData[0].linkedin} target="_blank"><img src={linkedinlogo} alt="LinkedIn Link" style={{width: "30px", height: "30px"}}/></a>
                 </div>
@@ -43,16 +42,16 @@ console.log(userData)
             
             <div>
                 <div className="bio">{userData[0].bio}</div>
-                <EditProfileForm id={id} />
+                <EditProfileForm loginId={loginId} />
             </div>
             <div id="nav">
                 <NavBar />
             </div>
             
             <div className="post-container">
-            <NewPostForm id={id} />
+            <NewPostForm loginId={loginId} />
                 <h3>Your Posts:</h3>
-                <PostContainer id={id} page="profile" search={search}/>
+                <AccountPostContainer loginId={loginId} page="profile" search={search}/>
             </div>
         </AccountHeader>
 
@@ -71,12 +70,12 @@ const AccountHeader = styled.div`
         height: 150px;
         box-shadow: 4px 4px lightgrey;
     }
-    #name {
+    #name2 {
         font-size: 40px;
         margin: 5px;
         text-shadow: 3px 3px lightgrey;
     }
-    #username {
+    #username2 {
         font-size: 28px;
         margin: 5px;
         text-shadow: 3px 3px lightgrey;

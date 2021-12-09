@@ -12,19 +12,16 @@ import HomePage from './components/HomePage';
 
 function App() {
   const [search, setSearch] = useState("")
-  const [loginId, setLoginId] = useState('')
+  const [loginId, setLoginId] = useState(57)
 
   function handleSearch(newSearch){
     console.log(newSearch)
     setSearch(newSearch)
   }
 
-
   const handleLogin = (login) => {
     setLoginId(login[0].id)
   }
-
-  console.log(loginId)
 
   useEffect(() => {
     fetch('http://localhost:9292/favorites')
@@ -44,15 +41,15 @@ function App() {
     </Route>
     <Route path="/home">
       <SearchBar  search={search} onSearch={handleSearch}/>
-      <HomePage search={search}/>
+      <HomePage search={search} loginId={loginId}/>
     </Route>
     <Route path="/account">
       <SearchBar  search={search} onSearch={handleSearch}/>
-      <AccountPage name="Landon" search={search} />
+      <AccountPage name="Landon" search={search} loginId={loginId}/>
     </Route>
     <Route path="/favorites">
       <SearchBar  search={search} onSearch={handleSearch}/>
-      <FavoritesPage search={search} />
+      <FavoritesPage search={search} loginId={loginId}/>
     </Route>
   </Switch>
 </div>

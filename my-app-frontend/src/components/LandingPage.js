@@ -1,9 +1,9 @@
 import {useEffect, useState} from 'react'
-// import {useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 
 function LandingPage({handleLogin}){
-  // const history = useHistory()
+  const history = useHistory()
   // const handleClick = () => history.push('/home')
   const [userInfo, setUserInfo] = useState("")
   const [loginData, setLoginData] = useState({
@@ -20,7 +20,7 @@ function LandingPage({handleLogin}){
         const login = data.filter(user => (user.username === loginData.username) && (user.password === loginData.password))
         if (!!login[0] === true) {
           handleLogin(login)
-          // history.push('/home')
+          history.push('/home')
         } else {
           console.log('failure')
         }
@@ -49,9 +49,7 @@ function LandingPage({handleLogin}){
             <label htmlFor="password" required>Password:</label><br/>
             <input type="password" id="password" className="login-details" value={loginData.password} placeholder="Enter password" onChange={(e) => handleChange(e)}/>
           </div>
-          {/* <Link to="/home"> */}
             <button type="submit" className="submit">Sign in</button><br/>
-          {/* </Link> */}
           <p className="link-text">  
             Need an account ? <Link className="reg-link" to="/register">sign up</Link>
           </p>

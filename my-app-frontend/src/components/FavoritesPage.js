@@ -6,37 +6,33 @@ import githublogo from "../images/github-logo.png"
 import linkedinlogo from "../images/linkedin-logo.png"
 import FavoritesContainer from './FavoritesContainer';
 
-function FavoritesPage({ search }) {
+function FavoritesPage({ search, loginId }) {
     const [userData, setUserData] = useState('')
-
-    const id = 1
-    // ^^ will be set dynamically when user is logged in 
+   
 
     useEffect(() => {
-        fetch(`http://localhost:4000/users/${id}`)
+        fetch(`http://localhost:9292/users/${loginId}`)
         .then(resp => resp.json())
         .then(data => setUserData(data))
     }, [])
+console.log(userData)
 
+    if (!!userData === false) return <h3>Loading...</h3>
 
     return (
         <div>
         <AccountHeader>
         <div className="head">
-            <img className="profile-photo" src={userData.img} />
+            <img className="profile-photo" src={userData[0].image_url} />
             <div className="names">
-                <h1 id="name1">{userData.name}</h1>
-                <h2 id="username1">@{userData.username}</h2>
-                <a href=""><img src={githublogo} alt="Github Link" style={{width: "30px", height: "30px"}}/></a>
-            <a href=""><img src={linkedinlogo} alt="LinkedIn Link" style={{width: "30px", height: "30px"}}/></a>
+                <h1 id="name1">{userData[0].name}</h1>
+                <h2 id="username1">@{userData[0].username}</h2>
+                <a href={userData[0].github}><img src={githublogo} alt="Github Link" style={{width: "30px", height: "30px"}}/></a>
+            <a href={userData[0].linkedin}><img src={linkedinlogo} alt="LinkedIn Link" style={{width: "30px", height: "30px"}}/></a>
                 </div>
             </div>
             <div>
-                <div className="bio">{userData.bio}</div>
-                <div className="follows">
-                <div>Followers: 25</div>
-                <div>Following: 32</div>
-                </div>
+                <div className="bio">{userData[0].bio}</div>
             </div>
             <div id="nav">
                 <NavBar />
@@ -44,7 +40,7 @@ function FavoritesPage({ search }) {
             <div className="post-container">
               
                 <h3>Your Favorites:</h3>
-                <FavoritesContainer search={search} />
+                <FavoritesContainer loginId={loginId} search={search} />
             </div>
         </AccountHeader>
 

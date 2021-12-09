@@ -1,18 +1,18 @@
 import {useState, useEffect} from 'react'
 import Post from "./Post"
 
-function PostContainer({ loginId, page, search }) {
+function AccountPostContainer({ loginId, page, search }) {
 
     const [posts, setPosts] = useState([])
-
-    
 
     
     useEffect(() => {
             fetch(`http://localhost:9292/posts`)
             .then(resp => resp.json())
             .then((posts) => {
-                setPosts(posts)
+                setPosts(posts.filter(post => {
+                    return post.user_id === loginId
+                }))
             })
     }, [])
 
@@ -23,7 +23,7 @@ function PostContainer({ loginId, page, search }) {
 
     const renderPosts = filteredPosts.map(post => {
 
-        return <Post key={post.id} post={post} loginId={loginId}/>
+        return <Post key={post.id} post={post} />
     })
 
 
@@ -35,4 +35,4 @@ function PostContainer({ loginId, page, search }) {
     )
 }
 
-export default PostContainer
+export default AccountPostContainer

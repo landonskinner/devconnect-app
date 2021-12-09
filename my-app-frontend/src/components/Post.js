@@ -5,8 +5,7 @@ import styled from "styled-components";
 import "../Post.css";
 
 function Post({
-  post: { id, header, description, image_url, content_link, like_count, user_id, created_at},
-}) {
+  post: { id, header, description, image_url, content_link, like_count, user_id, created_at}, loginId}) {
   const [userInfo, setUserInfo] = useState("");
   const [isFavorited, setIsFavorited] = useState(false);
 
@@ -21,7 +20,7 @@ function Post({
       });
   }, [user_id]);
 
-  const test_id = 4
+
 
     const handleClick = () => {
       console.log('hello')
@@ -29,7 +28,7 @@ function Post({
         method: 'POST',
         headers: {"Content-Type": 'application/json'},
         body: JSON.stringify({
-          user_id: test_id,
+          user_id: loginId,
           post_id: id 
         }),
       })
@@ -48,7 +47,7 @@ function Post({
       .then(data => {
 
         const var1 = data.filter(post => {
-          return (post.user_id === test_id) && (post.post_id === id)
+          return (post.user_id === loginId) && (post.post_id === id)
         })
         
         if (var1 !== []) {
