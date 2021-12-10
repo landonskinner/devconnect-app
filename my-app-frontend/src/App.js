@@ -12,7 +12,8 @@ import HomePage from './components/HomePage';
 
 function App() {
   const [search, setSearch] = useState("")
-  const [loginId, setLoginId] = useState(52)
+  const [loginId, setLoginId] = useState('')
+  
 
   function handleSearch(newSearch){
     console.log(newSearch)
@@ -20,15 +21,32 @@ function App() {
   }
 
   const handleLogin = (login) => {
+    fetch(`http://localhost:9292/users/${login[0].id}`)
+    .then(resp => resp.json())
+    .then(data => {
+      const newObj = {...data[0],last_active: new Date()}
+    fetch(`http://localhost:9292/users/${login[0].id}`, {
+      method: 'PATCH',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(newObj),
+    })
+    .then(resp => resp.json())
+    .then(data => console.log(data))
+    } 
+    )
+    
     setLoginId(login[0].id)
   }
 
   useEffect(() => {
     fetch('http://localhost:9292/favorites')
     .then(resp => resp.json())
-    .then(data => console.log(data))
+    .then(data => data)
   })
 
+  fetch('http://localhost:9292/users/active')
+    .then(resp => resp.json())
+    .then(data => setLoginId(data.id))
 
   return (
 <div className="App">
@@ -45,7 +63,7 @@ function App() {
     </Route>
     <Route path="/account">
       <SearchBar  search={search} onSearch={handleSearch}/>
-      <AccountPage name="Landon" search={search} loginId={loginId}/>
+      <AccountPage search={search} loginId={loginId} setLoginId={setLoginId}/>
     </Route>
     <Route path="/favorites">
       <SearchBar  search={search} onSearch={handleSearch}/>

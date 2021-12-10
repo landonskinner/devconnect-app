@@ -9,20 +9,16 @@ import EditProfileForm from './EditProfileForm'
 
 
 
-function AccountPage({name, search, loginId}) {
+function AccountPage({search, loginId, setLoginId}) {
 
     const [userData, setUserData] = useState('')
  
-
     useEffect(() => {
         fetch(`http://localhost:9292/users/${loginId}`)
         .then(resp => resp.json())
         .then(data => setUserData(data))
 
     }, [loginId])
-console.log(userData)
-
-
 
     if (!!userData === false) return <h3>Loading...</h3>
 
@@ -42,7 +38,7 @@ console.log(userData)
             
             <div>
                 <div className="bio">{userData[0].bio}</div>
-                <EditProfileForm loginId={loginId} />
+                <EditProfileForm loginId={loginId} setLoginId={setLoginId}/>
             </div>
             <div id="nav">
                 <NavBar />
