@@ -74,7 +74,7 @@
     width: 100%;
     word-wrap: break-word;
     z-index: 0;
-
+      margin: 5px;
   
     }
     .mock-img{
@@ -268,4 +268,9 @@
     float:left;
     margin-right: 8px;
     
+  }
+
+  .emoji-button {
+    width: 25px;
+    height: 25px;
   }

@@ -123,6 +123,7 @@ const AccountHeader = styled.div`
         bottom: 175px;
         margin: 0;
     }
+
     .post-container h3 {
         font-size: 24px;
         display: flex;

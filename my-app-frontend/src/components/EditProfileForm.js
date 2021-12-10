@@ -229,7 +229,7 @@ button {
     padding: 12px 24px;
     border-radius: 10px;
     text-decoration: none;
-    margin: 30px 30px;
+    margin: 20px 20px;
     cursor: pointer;
     box-shadow: 5px 5px grey;
 }

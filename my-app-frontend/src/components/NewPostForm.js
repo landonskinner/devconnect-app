@@ -187,6 +187,8 @@ button {
     margin: 9px 6px;
     cursor: pointer;
     box-shadow: 5px 5px grey;
+    position: relative;
+    bottom: 25px;
 }
 
 
