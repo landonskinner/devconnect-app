@@ -17,7 +17,7 @@ function PostContainer({ loginId, page, search }) {
     }, [])
 
     const filteredPosts = posts.filter(post => {
-        return post.header.includes(search)
+        return post.header.toLowerCase().includes(search.toLowerCase())
     });
 
     const renderPosts = filteredPosts.map(post => {
