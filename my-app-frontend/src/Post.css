@@ -210,16 +210,16 @@
     line-height: 19.3199996948242px;
     margin-bottom: 2px;
     margin-left: 0px;
-    margin-right: 0px;
+    margin-right: px;
     margin-top: 0px;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     overflow-y: hidden;
     padding-bottom: 0px;
     padding-left: 0px;
     padding-right: 22px;
     padding-top: 0px;
     text-align: left;
-    width: 86px;
+    width: auto;
   }
   .fb-group-text{
       color: rgb(20, 24, 35);
