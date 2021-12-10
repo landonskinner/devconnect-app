@@ -1,16 +1,17 @@
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import {Link} from 'react-router-dom'
+// import {FaUserNinja} from 'react-icons/fa'
+// import {VscError} from 'react-icons/vsc'
 
 function LandingPage({handleLogin}){
   const history = useHistory()
-  // const handleClick = () => history.push('/home')
-  const [userInfo, setUserInfo] = useState("")
+  // const [userInfo, setUserInfo] = useState("")
   const [loginData, setLoginData] = useState({
     username: "",
     password: ""
   })
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  // const [isLoggedIn, setIsLoggedIn] = useState(false)
   
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -36,29 +37,27 @@ function LandingPage({handleLogin}){
  
 
   return (
-    <>
-      <h2 className="page-title">Dev<em>Connect</em></h2>
-      <div className="form-container">
+    <div className="page-container">
+     <div className="form-container">
+      <header className="signin-title">dev<strong><em>Connect</em></strong></header>
         <form className="signin-register" onSubmit={handleSubmit}>
-          <h3 className="signin-title">Sign In</h3>
-          <div className="form-input">
-            <label htmlFor="username" required>Username:</label><br/>
-            <input type="text" id="username" className="login-details" value={loginData.username} placeholder="Enter username" onChange={(e) => handleChange(e)}/>
+          <div className="field username">
+            <div className="input-area">
+              <input type="text" id="username" className="login-details" value={loginData.username} placeholder="Username" onChange={(e) => handleChange(e)}/>
+            </div>
           </div>
-          <div className="form-input">
-            <label htmlFor="password" required>Password:</label><br/>
-            <input type="password" id="password" className="login-details" value={loginData.password} placeholder="Enter password" onChange={(e) => handleChange(e)}/>
+          <div className="field password">
+            <div className="input-area">
+              <input type="password" id="password" className="login-details" value={loginData.password} placeholder="Password" onChange={(e) => handleChange(e)}/>
+            </div>
           </div>
-            <button type="submit" className="submit">Sign in</button><br/>
-          <p className="link-text">  
-            Need an account ? <Link className="reg-link" to="/register">sign up</Link>
-          </p>
+          <input type="submit" className="submit" value="Sign in"/>
         </form>
+        <div className="link-text"> Need an account ? <Link className="reg-link" to="/register">Sign up now</Link></div>
       </div>
-    </>
+    </div>
   )
 }
 
 export default LandingPage
-
 
