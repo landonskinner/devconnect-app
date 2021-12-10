@@ -7,8 +7,6 @@ function FavoritesContainer({ search, loginId }) {
 
     const [posts, setPosts] = useState([])
 
-    const test_id = 4;
-
     useEffect(() => {
         fetch('http://localhost:9292/favorites')
         .then(resp => resp.json())
@@ -24,7 +22,7 @@ function FavoritesContainer({ search, loginId }) {
     console.log(posts)
     console.log(search)
     const renderPosts = filteredPosts.map(fav => {
-        return <FavoritePost key={fav.id} fav={fav} />
+        return <FavoritePost key={fav.id} fav={fav} loginId={loginId}/>
     })
 
 

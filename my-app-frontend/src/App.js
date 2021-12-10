@@ -12,7 +12,7 @@ import HomePage from './components/HomePage';
 
 function App() {
   const [search, setSearch] = useState("")
-  const [loginId, setLoginId] = useState(57)
+  const [loginId, setLoginId] = useState(52)
 
   function handleSearch(newSearch){
     console.log(newSearch)

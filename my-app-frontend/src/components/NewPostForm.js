@@ -1,15 +1,15 @@
 import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 
-function NewPostForm({id}) {
+function NewPostForm({loginId}) {
 
     const [postData, setPostData] = useState({
         header: "",
         description: "",
-        image_url: "",
+        image_url: '',
         content_link: "",
         like_count: 0,
-        user_id: id
+        user_id: loginId
     })
 
     const [isSelected, setIsSelected] = useState(false)
@@ -25,13 +25,13 @@ function NewPostForm({id}) {
         fetch('http://localhost:9292/posts', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(postData[0]),
+            body: JSON.stringify(postData),
         })
         .then(resp => resp.json())
         .then(data => console.log(data))
 
         setIsSelected(false)
-
+        window.location.reload(false)
         
     }
 
@@ -56,6 +56,7 @@ function NewPostForm({id}) {
                 placeholder="Give us the gist!"
                 value={postData.header}
                 onChange={(e) => handleChange(e)}
+                required
                 />
             </label>
             <label>
@@ -65,17 +66,18 @@ function NewPostForm({id}) {
                 placeholder="Tell the dev community what's so important about your post!"
                 value={postData.desciption}
                 onChange={(e) => handleChange(e)}
+                required
                 />
             </label>
             <label>
                 Post Image:
                 <input
-                type="file"
+                type="text"
                 id="image_url"
-                accept="image/png, image/jpeg"
                 placeholder="Give an image link"
                 value={postData.image_url}
                 onChange={(e) => handleChange(e)}
+                required
                 />
             </label>
             <label>
@@ -86,6 +88,7 @@ function NewPostForm({id}) {
                 placeholder="Link us to your resource!"
                 value={postData.content_link}
                 onChange={(e) => handleChange(e)}
+                required
                 />
             </label>
             <button type="submit">Share!</button>

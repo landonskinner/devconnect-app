@@ -62,13 +62,17 @@ console.log(userData)
 export default AccountPage
 
 const AccountHeader = styled.div`
-    .profile-photo {
+   
+
+.profile-photo {
         border-radius: 150px;
         border: 1px solid black;
         margin: 5px;
         width: 150px;
         height: 150px;
+        object-fit: cover;
         box-shadow: 4px 4px lightgrey;
+        
     }
     #name2 {
         font-size: 40px;

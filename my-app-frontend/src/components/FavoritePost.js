@@ -5,7 +5,7 @@ import styled from "styled-components";
 import "../Post.css";
 
 function FavoritePost({
-  fav: {id, user, post, user_id, post_id},
+  fav: {id, user, post, user_id, post_id}, loginId
 }) {
   const [userInfo, setUserInfo] = useState("");
   const [postInfo, setPostInfo] = useState("");
@@ -28,14 +28,13 @@ function FavoritePost({
             header: data[0].header,
             description: data[0].description,
             image_url: data[0].image_url,
-            content: data[0].content,
-            like_count: data[0].description,
+            content: data[0].content_link,
+            like_count: data[0].like_count,
             user_id: data[0].user_id
         })
     })
   }, [user_id]);
 
-  const test_id = 4
 
     const handleClick = () => {
       console.log('hello')
@@ -43,7 +42,7 @@ function FavoritePost({
         method: 'POST',
         headers: {"Content-Type": 'application/json'},
         body: JSON.stringify({
-          user_id: test_id,
+          user_id: loginId,
           post_id: post_id 
         }),
       })
@@ -62,7 +61,7 @@ function FavoritePost({
       .then(data => {
 
         const var1 = data.filter(post => {
-          return (post.user_id === test_id) && (post.post_id === post_id)
+          return (post.user_id === loginId) && (post.post_id === post_id)
         })
         
         if (var1 !== []) {
@@ -78,6 +77,40 @@ function FavoritePost({
       setIsFavorited(false)
       
     }
+
+    const parseTime = (created_at) => {
+      const date = new Date(created_at)
+      return date.getTime()
+    }
+
+    function timeSince(date) {
+
+      const seconds = Math.floor((new Date().getTime() - date) / 1000);
+      console.log(seconds)
+      let interval = seconds / 31536000;
+    
+      if (interval > 1) {
+        return Math.floor(interval) + " years";
+      }
+      interval = seconds / 2592000;
+      if (interval > 1) {
+        return Math.floor(interval) + " months";
+      }
+      interval = seconds / 86400;
+      if (interval > 1) {
+        return Math.floor(interval) + " days";
+      }
+      interval = seconds / 3600;
+      if (interval > 1) {
+        return Math.floor(interval) + " hours";
+      }
+      interval = seconds / 60;
+      if (interval > 1) {
+        return Math.floor(interval) + " minutes";
+      }
+      return Math.floor(seconds) + " seconds";
+    }
+
 
   return (
     <PostCard>
@@ -105,10 +138,11 @@ function FavoritePost({
             <div className="fb-group-text-top">
               <div className="fb-group-text">
                 <h5 className="fbh5">{userInfo.username}</h5>
-                <span className="fb-group-date">Right Now</span>
+                <span className="fb-group-date">{timeSince(parseTime(post.created_at))}</span>
               </div>
             </div>
           </div>
+          <a href={postInfo.content} target="_blank">
           <div className="mock-img-all">
             <div className="mock-img">
               <img src={postInfo.image_url}/>
@@ -118,12 +152,13 @@ function FavoritePost({
                 <div className="mock-title-top">
                   <p>{postInfo.header}</p>
                 </div>
-                <div className="mock-title-mid">Description: {postInfo.content}</div>
+                <div className="mock-title-mid">{postInfo.description}</div>
               </div>
             </div>
           </div>
+          </a>
           <p>♡ {postInfo.like_count}</p>
-        </div>
+          </div>
       </div>
     </PostCard>
   );
