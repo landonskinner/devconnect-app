@@ -17,7 +17,7 @@ function FavoritesContainer({ search, loginId }) {
     }, [])
 
     const filteredPosts = posts.filter(post => {
-        return post.post.header.includes(search)
+        return post.post.header.toLowerCase().includes(search.toLowerCase())
     });
     console.log(posts)
     console.log(search)
