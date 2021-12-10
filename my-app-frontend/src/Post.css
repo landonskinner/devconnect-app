@@ -262,6 +262,8 @@
     display: block;
     border-radius: 40px;
     height: 40px;
+    width: 40px;
+    object-fit: cover;
     text-align: left;
     float:left;
     margin-right: 8px;

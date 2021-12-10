@@ -63,6 +63,39 @@ function Post({
       setIsFavorited(false)
     }
 
+    const parseTime = (created_at) => {
+      const date = new Date(created_at)
+      return date.getTime()
+    }
+
+    function timeSince(date) {
+
+      const seconds = Math.floor((new Date().getTime() - date) / 1000);
+      console.log(seconds)
+      let interval = seconds / 31536000;
+    
+      if (interval > 1) {
+        return Math.floor(interval) + " years";
+      }
+      interval = seconds / 2592000;
+      if (interval > 1) {
+        return Math.floor(interval) + " months";
+      }
+      interval = seconds / 86400;
+      if (interval > 1) {
+        return Math.floor(interval) + " days";
+      }
+      interval = seconds / 3600;
+      if (interval > 1) {
+        return Math.floor(interval) + " hours";
+      }
+      interval = seconds / 60;
+      if (interval > 1) {
+        return Math.floor(interval) + " minutes";
+      }
+      return Math.floor(seconds) + " seconds";
+    }
+
 
   return (
     <PostCard>
@@ -90,7 +123,7 @@ function Post({
             <div className="fb-group-text-top">
               <div className="fb-group-text">
                 <h5 className="fbh5">{userInfo.username}</h5>
-                <span className="fb-group-date">Right Now</span>
+                <span className="fb-group-date">{timeSince(parseTime(created_at))}</span>
               </div>
             </div>
           </div>
@@ -104,7 +137,7 @@ function Post({
                 <div className="mock-title-top">
                   <p>{header}</p>
                 </div>
-                <div className="mock-title-mid">Description: {description}</div>
+                <div className="mock-title-mid">{description}</div>
               </div>
             </div>
           </div>
@@ -128,5 +161,6 @@ const PostCard = styled.div`
   padding: 7px;
   box-shadow: 10px 10px grey;
   background: white;
+
 `;
 

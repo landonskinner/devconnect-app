@@ -1,9 +1,23 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 
-function EditProfileForm(id) {
+function EditProfileForm(loginId) {
 
-    const [editData, setEditData] = useState('')
+    const [editData, setEditData] = useState({
+        name: "",
+        username: "",
+        github: "",
+        linkedin: "",
+        bio: "",
+        image_url: ""
+    })
+
+    useEffect(() => {
+        fetch(`http://localhost:9292/users/${loginId.loginId}`)
+        .then(resp => resp.json())
+        .then(data => setEditData(data[0]))
+    }, [loginId])
+    console.log(editData)
 
     const [isSelected, setIsSelected] = useState(false)
 
@@ -13,8 +27,7 @@ function EditProfileForm(id) {
 
     const handleEdit = (e) => {
         e.preventDefault()
-        console.log()
-        fetch(`http://localhost:9292/users/${id.id}`, {
+        fetch(`http://localhost:9292/users/${loginId.loginId}`, {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(editData),
@@ -23,18 +36,22 @@ function EditProfileForm(id) {
         .then(data => console.log(data))
 
         setIsSelected(false)
+        // setEditData({
+        //     name: "",
+        //     username: "",
+        //     github: "",
+        //     linkedin: "",
+        //     bio: "",
+        //     image_url: ""
+        // })
         window.location.reload(false)
     }
 
     const handleChange = (e) => {
-        fetch(`http://localhost:9292/users/${id.id}`)
-        .then(resp => resp.json())
-        .then(data => {
             setEditData({
-                ...data[0],
+                ...editData,
                 [e.target.id]: e.target.value
             })
-        })
     }
 
 
@@ -98,12 +115,11 @@ function EditProfileForm(id) {
                 />
             </label>
             <label>
-                Profile Photo:
+                Profile Photo Link:
                 <input
-                type="file"
+                type="text"
                 id="image_url"
-                accept="image/png, image/jpeg"
-                placeholder="Update your profile photo."
+                placeholder="Update your profile photo..."
                 onChange={(e) => handleChange(e)}
                 />
             </label>

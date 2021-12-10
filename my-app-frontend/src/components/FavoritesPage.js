@@ -27,12 +27,9 @@ console.log(userData)
             <div className="names">
                 <h1 id="name1">{userData[0].name}</h1>
                 <h2 id="username1">@{userData[0].username}</h2>
-                <a href={userData[0].github}><img src={githublogo} alt="Github Link" style={{width: "30px", height: "30px"}}/></a>
-            <a href={userData[0].linkedin}><img src={linkedinlogo} alt="LinkedIn Link" style={{width: "30px", height: "30px"}}/></a>
+                <a href={userData[0].github} target="_blank"><img src={githublogo} alt="Github Link"  style={{width: "30px", height: "30px"}}/></a>
+            <a href={userData[0].linkedin} target="_blank"><img src={linkedinlogo} alt="LinkedIn Link"  style={{width: "30px", height: "30px"}}/></a>
                 </div>
-            </div>
-            <div>
-                {/* <div className="bio">{userData[0].bio}</div> */}
             </div>
             <div id="nav">
                 <NavBar />

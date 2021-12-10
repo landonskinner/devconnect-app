@@ -16,13 +16,11 @@ function PostContainer({ loginId, page, search }) {
             })
     }, [])
 
-
     const filteredPosts = posts.filter(post => {
         return post.header.includes(search)
     });
 
     const renderPosts = filteredPosts.map(post => {
-
         return <Post key={post.id} post={post} loginId={loginId}/>
     })
 
