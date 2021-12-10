@@ -104,8 +104,7 @@ function EditProfileForm(loginId, setLoginId) {
             </label>
             <label>
                 Bio:
-                <input
-                type="text"
+                <textarea
                 id="bio"
                 placeholder="Update your bio..."
                 value={editData.bio}
@@ -163,7 +162,7 @@ padding: 30px;
 
     label {
         font-size: 16px;
-        justify-content: left
+        justify-content: left;
     }
 
     textarea {
@@ -171,24 +170,33 @@ padding: 30px;
         display: block;
         margin: auto;
         width: 90%;
-        height: 120px;
+        height: 125px;
         font-family: arial;
         border-radius: 5px;
+        text-align: top;
+        padding: 5px;
     }
 
     input, #name, #username {
         display: block;
+        justify-content: center;
         margin: auto;
+        margin: 0px;
+        position: relative;
+        left: 20px;
         width: 90%;
         font-family: arial;
         border-radius: 5px;
         font-size: 12px;
         text-shadow: none;
+        height: 20px;
+        background-color: white;
+        padding: 5px;
     }
     
     .fix {
         display: block;
-        margin: auto;
+        /* margin: auto; */
         width: 90%;
         font-family: arial;
         border-radius: 5px;

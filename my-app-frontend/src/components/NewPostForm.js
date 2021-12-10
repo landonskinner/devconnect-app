@@ -142,14 +142,26 @@ justify-content: center;
         height: 120px;
         font-family: arial;
         border-radius: 5px;
+        position: relative;
+        right: 5px;
+        padding: 5px;
     }
 
     input {
         display: block;
-        margin: auto;
+        justify-content: center;
+        /* margin: auto; */
+        margin: 0px;
+        position: relative;
+        left: 20px;
         width: 90%;
         font-family: arial;
         border-radius: 5px;
+        font-size: 12px;
+        text-shadow: none;
+        height: 20px;
+        background-color: white;
+        padding: 5px;
     }
 
     #img {
