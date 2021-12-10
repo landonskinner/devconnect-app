@@ -142,34 +142,19 @@ form input[type="submit"]:hover{
   font-family: 'Inconsolata', monospace;
 }
 
-.account-link {
-  margin: 10px;
-  padding: 5px;
-  border: 1px solid black;
-  border-radius: 15px;
-  line-height: 25px;
-  box-shadow: 7px 7px grey;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 1.5rem;
-  float: right;
-}
-
-.account-link:hover {
-  box-shadow: 7px 7px black;
-}
-
-.account-link:visited {
-  text-decoration: none;
-  color: black;
-}
-
 .prof-photo-home {
-  border-radius: 3%;
+  border-radius: 8%;
   border: 1px solid black;
   margin: 10px;
   width: 350px;
   height: 350px;
   box-shadow: 4px 4px lightgrey;
   float: left;
+}
+
+/* Home Nav */
+
+.home-nav {
+  margin: auto;
+  width: 40%;
 }
