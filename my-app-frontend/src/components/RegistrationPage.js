@@ -31,36 +31,35 @@ function RegistrationPage({handleLogin}){
 }
 
   return(
-    <>
-      <h2 className="page-title">Dev<em>Connect</em></h2>
-      <div className="form-container">
+    <div className="page-container">
+     <div className="form-container">
+     <header className="signin-title">dev<strong><em>Connect</em></strong></header>
         <form className="signin-register" onSubmit={handleSubmit}>
-          <h3 className="signup-title">Sign up</h3>
-          <div className="form-input">
-            <label className="form-label" htmlFor="name">Name:</label><br/>
-            <input type="text" id="name" className="registration-details" value={newUser.name} onChange={(e) => handleChange(e)} placeholder="Name" />
+          <div className="field name">
+              <div className="input-area">
+                <input type="text" id="name" value={newUser.name} onChange={(e) => handleChange(e)} placeholder="Name" />
+              </div>
+            </div>
+            <div className="field username">
+              <div className="input-area">
+                <input type="text" id="username" value={newUser.username} onChange={(e) => handleChange(e)} placeholder="Username" />
+              </div>
+            </div>
+            <div className="field email">
+              <div className="input-area">
+                <input type="email" id="email" value={newUser.email} onChange={(e) => handleChange(e)} placeholder="Enter email" />
+              </div>
+            </div>
+            <div className="field password">
+              <div className="input-area">
+                <input type="password" id="password" value={newUser.password} onChange={(e) => handleChange(e)} placeholder="Enter password" />
+              </div>
           </div>
-          <div className="form-input">
-            <label className="form-label" htmlFor="user name">User name:</label><br/>
-            <input type="text" id="username" className="registration-details" value={newUser.username} onChange={(e) => handleChange(e)} placeholder="User name" />
-          </div>
-          <div className="form-input">
-            <label className="form-label" htmlFor="email">Email:</label><br/>
-            <input type="email" id="email" className="registration-details" value={newUser.email} onChange={(e) => handleChange(e)} placeholder="Enter email" />
-          </div>
-          <div className="form-input">
-            <label className="form-label" htmlFor="password">Password:</label><br/>
-            <input type="password" id="password" className="registration-details" value={newUser.password} onChange={(e) => handleChange(e)} placeholder="Enter password" />
-          </div>
-          {/* <Link to="/home"> */}
-            <button type="submit" className="submit">Register</button>
-          {/* </Link> */}
-          <p className="link-text">
-            Already registered ? <Link class="reg-link" to="/">sign in</Link>
-          </p>
-        </form>
+        <input type="submit" className="submit" value="Sign up"/> 
+       </form>
+       <div className="link-text"> Already registered ? <Link class="reg-link" to="/">Sign in</Link> </div>
       </div>
-    </>
+    </div>
   )
 }
 
