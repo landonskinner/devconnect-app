@@ -32,7 +32,7 @@ console.log(userData)
                 </div>
             </div>
             <div>
-                <div className="bio">{userData[0].bio}</div>
+                {/* <div className="bio">{userData[0].bio}</div> */}
             </div>
             <div id="nav">
                 <NavBar />
