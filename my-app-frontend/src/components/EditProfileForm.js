@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 
-function EditProfileForm(loginId) {
+function EditProfileForm(loginId, setLoginId) {
 
     const [editData, setEditData] = useState({
         name: "",
@@ -17,8 +17,7 @@ function EditProfileForm(loginId) {
         .then(resp => resp.json())
         .then(data => setEditData(data[0]))
     }, [loginId])
-    console.log(editData)
-
+    
     const [isSelected, setIsSelected] = useState(false)
 
     const handleNewEditClick = () => {
@@ -36,14 +35,14 @@ function EditProfileForm(loginId) {
         .then(data => console.log(data))
 
         setIsSelected(false)
-        // setEditData({
-        //     name: "",
-        //     username: "",
-        //     github: "",
-        //     linkedin: "",
-        //     bio: "",
-        //     image_url: ""
-        // })
+        setEditData({
+            name: "",
+            username: "",
+            github: "",
+            linkedin: "",
+            bio: "",
+            image_url: ""
+        })
         window.location.reload(false)
     }
 
@@ -53,7 +52,6 @@ function EditProfileForm(loginId) {
                 [e.target.id]: e.target.value
             })
     }
-
 
     return (
         <div>

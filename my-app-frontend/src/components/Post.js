@@ -23,7 +23,6 @@ function Post({
 
 
     const handleClick = () => {
-      console.log('hello')
       fetch('http://localhost:9292/favorites', {
         method: 'POST',
         headers: {"Content-Type": 'application/json'},
@@ -34,9 +33,7 @@ function Post({
       })
       .then(res => res.json())
       .then(() => {
-        console.log('success')
         setIsFavorited(true)
-
       })
   }
 
@@ -71,7 +68,7 @@ function Post({
     function timeSince(date) {
 
       const seconds = Math.floor((new Date().getTime() - date) / 1000);
-      console.log(seconds)
+
       let interval = seconds / 31536000;
     
       if (interval > 1) {
