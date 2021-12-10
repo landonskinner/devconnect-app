@@ -32,7 +32,9 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: white;
+  background: url('./images/background3.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 ::selection{
