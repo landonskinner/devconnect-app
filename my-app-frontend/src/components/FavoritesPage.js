@@ -14,8 +14,8 @@ function FavoritesPage({ search, loginId }) {
         fetch(`http://localhost:9292/users/${loginId}`)
         .then(resp => resp.json())
         .then(data => setUserData(data))
-    }, [])
-console.log(userData)
+    }, [loginId])
+
 
     if (!!userData === false) return <h3>Loading...</h3>
 
@@ -119,7 +119,7 @@ console.log(userData)
   }
   #nav {
       position: relative;
-      bottom: 115px;
+      bottom: -20px;
       left: 3%;
       width: 25%;
       z-index: 1;
