@@ -1,7 +1,10 @@
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import {useState} from 'react'
 
+
 function RegistrationPage({handleLogin}){
+
+  const history = useHistory()
 
   const [newUser, setNewUser] = useState({
     name: "",
@@ -20,7 +23,10 @@ function RegistrationPage({handleLogin}){
       body: JSON.stringify(newUser)
     })
     .then(resp => resp.json())
-    .then(data => handleLogin([data]))
+    .then(data => {
+      handleLogin([data])
+      history.push("/home")
+    })
   }
 
   const handleChange = (e) => {

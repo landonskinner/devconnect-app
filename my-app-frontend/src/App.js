@@ -25,14 +25,14 @@ function App() {
     .then(resp => resp.json())
     .then(data => {
       const newObj = {...data[0],last_active: new Date()}
-    fetch(`http://localhost:9292/users/${login[0].id}`, {
-      method: 'PATCH',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(newObj),
-    })
-    .then(resp => resp.json())
-    .then(data => console.log(data))
-    } 
+      fetch(`http://localhost:9292/users/${login[0].id}`, {
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(newObj),
+      })
+      .then(resp => resp.json())
+      .then(data => console.log(data))
+      } 
     )
     
     setLoginId(login[0].id)
