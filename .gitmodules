@@ -1,3 +1,0 @@
-[submodule "my-app-backend"]
-	path = my-app-backend
-	url = https://github.com/landonskinner/phase-3-sinatra-react-project.git
