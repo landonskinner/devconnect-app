@@ -10,7 +10,7 @@ function Post({
   const [isFavorited, setIsFavorited] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:9292/users/${user_id}`)
+    fetch(`https://devconnect-backend-server.herokuapp.com/users/${user_id}`)
       .then((resp) => resp.json())
       .then((data) => {
         setUserInfo({
@@ -23,7 +23,7 @@ function Post({
 
 
     const handleClick = () => {
-      fetch('http://localhost:9292/favorites', {
+      fetch('https://devconnect-backend-server.herokuapp.com/favorites', {
         method: 'POST',
         headers: {"Content-Type": 'application/json'},
         body: JSON.stringify({
@@ -39,7 +39,7 @@ function Post({
 
     
     const handleUnfavorite = (e) => {
-      fetch('http://localhost:9292/favorites')
+      fetch('https://devconnect-backend-server.herokuapp.com/favorites')
       .then(resp => resp.json())
       .then(data => {
 
@@ -49,7 +49,7 @@ function Post({
         
         if (var1 !== []) {
           var1.forEach(fav => {
-            fetch(`http://localhost:9292/favorites/${fav.id}`, {
+            fetch(`https://devconnect-backend-server.herokuapp.com/favorites/${fav.id}`, {
               method: 'DELETE'
             })
             .then(resp => resp.json())
@@ -116,7 +116,7 @@ function Post({
             )}
           </div>
           <div className="fb-group-picrow">
-            <img src={userInfo.img} />
+            <img src={userInfo.img} alt="profile"/>
             <div className="fb-group-text-top">
               <div className="fb-group-text">
                 <h5 className="fbh5">{userInfo.username}</h5>
@@ -124,10 +124,10 @@ function Post({
               </div>
             </div>
           </div>
-          <a href={content_link} target="_blank">
+          <a href={content_link} target="_blank" rel="noreferrer">
           <div className="mock-img-all">
             <div className="mock-img">
-              <img src={image_url}/>
+              <img src={image_url} alt="post"/>
             </div>
             <div className="mock-title">
               <div className="mock-title2">

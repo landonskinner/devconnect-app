@@ -12,7 +12,7 @@ function FavoritePost({
   const [isFavorited, setIsFavorited] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:9292/users/${post.user_id}`)
+    fetch(`https://devconnect-backend-server.herokuapp.com/users/${post.user_id}`)
       .then((resp) => resp.json())
       .then((data) => {
         setUserInfo({
@@ -21,7 +21,7 @@ function FavoritePost({
         });
       });
     
-    fetch(`http://localhost:9292/posts/${post_id}`)
+    fetch(`https://devconnect-backend-server.herokuapp.com/posts/${post_id}`)
     .then(resp => resp.json())
     .then(data => {
         setPostInfo({
@@ -38,7 +38,7 @@ function FavoritePost({
 
     const handleClick = () => {
       console.log('hello')
-      fetch('http://localhost:9292/favorites', {
+      fetch('https://devconnect-backend-server.herokuapp.com/favorites', {
         method: 'POST',
         headers: {"Content-Type": 'application/json'},
         body: JSON.stringify({
@@ -56,7 +56,7 @@ function FavoritePost({
     
 
     const handleUnfavorite = (e) => {
-      fetch('http://localhost:9292/favorites')
+      fetch('https://devconnect-backend-server.herokuapp.com/favorites')
       .then(resp => resp.json())
       .then(data => {
 
@@ -66,7 +66,7 @@ function FavoritePost({
         
         if (var1 !== []) {
           var1.forEach(fav => {
-            fetch(`http://localhost:9292/favorites/${fav.id}`, {
+            fetch(`https://devconnect-backend-server.herokuapp.com/favorites/${fav.id}`, {
               method: 'DELETE'
             })
             .then(resp => resp.json())
@@ -134,7 +134,7 @@ function FavoritePost({
             )}
           </div>
           <div className="fb-group-picrow">
-            <img src={userInfo.img} />
+            <img src={userInfo.img} alt="profile"/>
             <div className="fb-group-text-top">
               <div className="fb-group-text">
                 <h5 className="fbh5">{userInfo.username}</h5>
@@ -142,10 +142,10 @@ function FavoritePost({
               </div>
             </div>
           </div>
-          <a href={postInfo.content} target="_blank">
+          <a href={postInfo.content} target="_blank" rel="noreferrer">
           <div className="mock-img-all">
             <div className="mock-img">
-              <img src={postInfo.image_url}/>
+              <img src={postInfo.image_url} alt="post"/>
             </div>
             <div className="mock-title">
               <div className="mock-title2">

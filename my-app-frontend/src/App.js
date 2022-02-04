@@ -5,7 +5,6 @@ import AccountPage from './components/AccountPage';
 import FavoritesPage from './components/FavoritesPage';
 import SearchBar from './components/SearchBar';
 import LandingPage from './components/LandingPage';
-import NavBar from './components/NavBar';
 import RegistrationPage from './components/RegistrationPage';
 import HomePage from './components/HomePage';
 
@@ -21,11 +20,11 @@ function App() {
   }
 
   const handleLogin = (login) => {
-    fetch(`http://localhost:9292/users/${login[0].id}`)
+    fetch(`https://devconnect-backend-server.herokuapp.com/users/${login[0].id}`)
     .then(resp => resp.json())
     .then(data => {
       const newObj = {...data[0],last_active: new Date()}
-      fetch(`http://localhost:9292/users/${login[0].id}`, {
+      fetch(`https://devconnect-backend-server.herokuapp.com/users/${login[0].id}`, {
         method: 'PATCH',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(newObj),
@@ -39,15 +38,15 @@ function App() {
   }
 
   useEffect(() => {
-    fetch('http://localhost:9292/favorites')
+    fetch('https://devconnect-backend-server.herokuapp.com/favorites')
     .then(resp => resp.json())
     .then(data => data)
   })
 
-  fetch('http://localhost:9292/users/active')
-    .then(resp => resp.json())
-    .then(data => setLoginId(data.id))
-
+  // fetch('https://devconnect-backend-server.herokuapp.com/users/active')
+  //   .then(resp => resp.json())
+  //   .then(data => setLoginId(data.id))
+  
   return (
 <div className="App">
   <Switch>

@@ -15,7 +15,7 @@ function RegistrationPage({handleLogin}){
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    fetch(`http://localhost:9292/users`, {
+    fetch(`https://devconnect-backend-server.herokuapp.com/users`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",

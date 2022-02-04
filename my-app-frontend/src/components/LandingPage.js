@@ -15,7 +15,7 @@ function LandingPage({handleLogin}){
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    fetch(`http://localhost:9292/users`)
+    fetch(`https://devconnect-backend-server.herokuapp.com/users`)
     .then(res => res.json())
     .then(data => {
         const login = data.filter(user => (user.username === loginData.username) && (user.password === loginData.password))
