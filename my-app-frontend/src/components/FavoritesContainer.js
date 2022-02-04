@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Post from './Post';
 import FavoritePost from './FavoritePost';
 
 
@@ -8,13 +7,13 @@ function FavoritesContainer({ search, loginId }) {
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:9292/favorites')
+        fetch('https://devconnect-backend-server.herokuapp.com/favorites')
         .then(resp => resp.json())
         .then((posts) => {
             const favs = posts.filter(post => post.user_id === loginId)
             setPosts(favs)
         })
-    }, [])
+    }, [loginId])
 
     const filteredPosts = posts.filter(post => {
         return post.post.header.toLowerCase().includes(search.toLowerCase())

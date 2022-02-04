@@ -7,14 +7,14 @@ function AccountPostContainer({ loginId, page, search }) {
 
     
     useEffect(() => {
-            fetch(`http://localhost:9292/posts`)
+            fetch(`https://devconnect-backend-server.herokuapp.com/posts`)
             .then(resp => resp.json())
             .then((posts) => {
                 setPosts(posts.filter(post => {
                     return post.user_id === loginId
                 }))
             })
-    }, [])
+    }, [loginId])
 
 
     const filteredPosts = posts.filter(post => {

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import SearchBar from "./SearchBar";
 import NavBar from "./NavBar";
 import styled from "styled-components";
 import githublogo from "../images/github-logo.png"
@@ -11,7 +10,7 @@ function FavoritesPage({ search, loginId }) {
    
 
     useEffect(() => {
-        fetch(`http://localhost:9292/users/${loginId}`)
+        fetch(`https://devconnect-backend-server.herokuapp.com/users/${loginId}`)
         .then(resp => resp.json())
         .then(data => setUserData(data))
     }, [loginId])
@@ -23,12 +22,12 @@ function FavoritesPage({ search, loginId }) {
         <div>
         <AccountHeader>
         <div className="head">
-            <img className="profile-photo" src={userData[0].image_url} />
+            <img className="profile-photo" src={userData[0].image_url} alt="profile"/>
             <div className="names">
                 <h1 id="name1">{userData[0].name}</h1>
                 <h2 id="username1">@{userData[0].username}</h2>
-                <a href={userData[0].github} target="_blank"><img src={githublogo} alt="Github Link"  style={{width: "30px", height: "30px"}}/></a>
-            <a href={userData[0].linkedin} target="_blank"><img src={linkedinlogo} alt="LinkedIn Link"  style={{width: "30px", height: "30px"}}/></a>
+                <a href={userData[0].github} target="_blank" rel="noreferrer"><img src={githublogo} alt="Github Link"  style={{width: "30px", height: "30px"}}/></a>
+            <a href={userData[0].linkedin} target="_blank" rel="noreferrer"><img src={linkedinlogo} alt="LinkedIn Link"  style={{width: "30px", height: "30px"}}/></a>
                 </div>
             </div>
             <div id="nav">

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 
 function NewPostForm({loginId}) {
@@ -22,7 +22,7 @@ function NewPostForm({loginId}) {
         e.preventDefault()
         console.log(postData)
         
-        fetch('http://localhost:9292/posts', {
+        fetch('https://devconnect-backend-server.herokuapp.com/posts', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(postData),

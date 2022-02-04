@@ -14,7 +14,7 @@ function AccountPage({search, loginId, setLoginId}) {
     const [userData, setUserData] = useState('')
  
     useEffect(() => {
-        fetch(`http://localhost:9292/users/${loginId}`)
+        fetch(`https://devconnect-backend-server.herokuapp.com/users/${loginId}`)
         .then(resp => resp.json())
         .then(data => setUserData(data))
 
@@ -27,12 +27,12 @@ function AccountPage({search, loginId, setLoginId}) {
         <AccountHeader>
             
         <div className="head">
-            <img className="profile-photo" src={userData[0].image_url} />
+            <img className="profile-photo" src={userData[0].image_url} alt="profile"/>
             <div className="names">
                 <h1 id="name2">{userData[0].name}</h1>
                 <h2 id="username2">@{userData[0].username}</h2>
-                <a href={userData[0].github} target="_blank"><img src={githublogo} alt="Github Link" style={{width: "30px", height: "30px"}}/></a>
-                <a href={userData[0].linkedin} target="_blank"><img src={linkedinlogo} alt="LinkedIn Link" style={{width: "30px", height: "30px"}}/></a>
+                <a href={userData[0].github} target="_blank" rel="noreferrer"><img src={githublogo} alt="Github Link" style={{width: "30px", height: "30px"}}/></a>
+                <a href={userData[0].linkedin} target="_blank" rel="noreferrer"><img src={linkedinlogo} alt="LinkedIn Link" style={{width: "30px", height: "30px"}}/></a>
                 </div>
             </div>
             

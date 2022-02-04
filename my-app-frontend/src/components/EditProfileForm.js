@@ -13,7 +13,7 @@ function EditProfileForm(loginId, setLoginId) {
     })
 
     useEffect(() => {
-        fetch(`http://localhost:9292/users/${loginId.loginId}`)
+        fetch(`https://devconnect-backend-server.herokuapp.com/users/${loginId.loginId}`)
         .then(resp => resp.json())
         .then(data => setEditData(data[0]))
     }, [loginId])
@@ -26,7 +26,7 @@ function EditProfileForm(loginId, setLoginId) {
 
     const handleEdit = (e) => {
         e.preventDefault()
-        fetch(`http://localhost:9292/users/${loginId.loginId}`, {
+        fetch(`https://devconnect-backend-server.herokuapp.com/users/${loginId.loginId}`, {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(editData),
